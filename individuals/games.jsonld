@@ -1,0 +1,902 @@
+[
+    {
+        "@id": "http://www.semanticweb.org/prc/2020/gamingWiki#grand-theft-auto-v",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "http://www.semanticweb.org/prc/2020/gamingWiki#Games"
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#short_screenshots": [
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/games/b11/b115b2bc6a5957a917bc7601f4abdda2.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/1b4/1b4eefb4cc2a77d4d35bb4a6926f3189.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/a7c/a7c43871a54bed6573a6a429451564ef.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/cf4/cf4367daf6a1e33684bf19adb02d16d6.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/f95/f9518b1d99210c0cae21fc09e95b4e31.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/2dc/2dc7ea94641f7329d177f228564b968a.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/a5c/a5c95ea539c87d5f538763e16e18fb99.jpg"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#name": [
+            {
+                "@value": "Grand Theft Auto V"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#released": [
+            {
+                "@value": "2013-09-17"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#tba": [
+            {
+                "@value": false
+            }
+        ]
+    },
+    {
+        "@id": "http://www.semanticweb.org/prc/2020/gamingWiki#portal-2",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "http://www.semanticweb.org/prc/2020/gamingWiki#Games"
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#short_screenshots": [
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/games/328/3283617cb7d75d67257fc58339188742.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/221/221a03c11e5ff9f765d62f60d4b4cbf5.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/173/1737ff43c14f40294011a209b1012875.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/b11/b11a2ae0664f0e8a1ef2346f99df26e1.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/9b1/9b107a790909b31918ebe2f40547cc85.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/d05/d058fc7f7fa6128916c311eb14267fed.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/415/41543dcc12dffc8e97d85a56ad42cda8.jpg"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#name": [
+            {
+                "@value": "Portal 2"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#released": [
+            {
+                "@value": "2011-04-19"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#tba": [
+            {
+                "@value": false
+            }
+        ]
+    },
+    {
+        "@id": "http://www.semanticweb.org/prc/2020/gamingWiki#the-witcher-3-wild-hunt",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "http://www.semanticweb.org/prc/2020/gamingWiki#Games"
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#short_screenshots": [
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/games/088/088b41ca3f9d22163e43be07acf42304.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/1ac/1ac19f31974314855ad7be266adeb500.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/6a0/6a08afca95261a2fe221ea9e01d28762.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/cdd/cdd31b6b4a687425a87b5ce231ac89d7.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/862/862397b153221a625922d3bb66337834.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/166/166787c442a45f52f4f230c33fd7d605.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/f63/f6373ee614046d81503d63f167181803.jpg"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#name": [
+            {
+                "@value": "The Witcher 3: Wild Hunt"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#released": [
+            {
+                "@value": "2015-05-18"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#tba": [
+            {
+                "@value": false
+            }
+        ]
+    },
+    {
+        "@id": "http://www.semanticweb.org/prc/2020/gamingWiki#the-elder-scrolls-v-skyrim",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "http://www.semanticweb.org/prc/2020/gamingWiki#Games"
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#short_screenshots": [
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/games/e9c/e9cbc91e2090638ddab6ae0b3d334f90.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/3bd/3bd2710bd1ffb6664fdea7b83afd067e.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/d4e/d4e9b13f54748584ccbd6f998094dade.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/599/59946a630e9c7871003763d63184404a.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/c5d/c5dad426038d7d12f933eedbeab48ff3.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/b32/b326fa01c82db82edd41ed299886ee44.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/091/091e95b49d5a22de036698fc731395a2.jpg"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#name": [
+            {
+                "@value": "The Elder Scrolls V: Skyrim"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#released": [
+            {
+                "@value": "2011-11-11"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#tba": [
+            {
+                "@value": false
+            }
+        ]
+    },
+    {
+        "@id": "http://www.semanticweb.org/prc/2020/gamingWiki#left-4-dead-2",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "http://www.semanticweb.org/prc/2020/gamingWiki#Games"
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#short_screenshots": [
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/games/d58/d588947d4286e7b5e0e12e1bea7d9844.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/4c0/4c043fd1a5ff78900483f2e82580fea0.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/c90/c9071628c238fbc20b366e2413dd8b4a.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/e29/e293b0f98092b8c0dbe24d66846088bb.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/168/16867bc76b385eb0fb749e41f7ada93d.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/fb9/fb917e562f311f48ff8d27632bd29a80.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/5f2/5f2ca569912add2a211b20ba3f576b97.jpg"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#name": [
+            {
+                "@value": "Left 4 Dead 2"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#released": [
+            {
+                "@value": "2009-11-17"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#tba": [
+            {
+                "@value": false
+            }
+        ]
+    },
+    {
+        "@id": "http://www.semanticweb.org/prc/2020/gamingWiki#borderlands-2",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "http://www.semanticweb.org/prc/2020/gamingWiki#Games"
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#short_screenshots": [
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/games/588/588c6bdff3d4baf66ec36b1c05b793bf.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/adb/adbbb37113618ee107459cd5c344f2a8.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/616/61643dd96e936d29eb68cf53b2334e53.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/864/8644946ba14a03ab69f0766c42a03f80.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/f87/f87ad2b8f02b56e36c57b25cf8eac042.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/194/194e0962afa272604300001718a07793.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/297/29716964351ecd82545f1de3a50dfc4e.jpg"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#name": [
+            {
+                "@value": "Borderlands 2"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#released": [
+            {
+                "@value": "2012-09-18"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#tba": [
+            {
+                "@value": false
+            }
+        ]
+    },
+    {
+        "@id": "http://www.semanticweb.org/prc/2020/gamingWiki#bioshock-infinite",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "http://www.semanticweb.org/prc/2020/gamingWiki#Games"
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#short_screenshots": [
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/games/fc1/fc1307a2774506b5bd65d7e8424664a7.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/bf0/bf07e2c6d2c888d372917d9ef453c8a4.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/9d3/9d38833952812ad7888a6dc21699934f.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/595/59572d257b6797986e4eabcd1ee023fd.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/f71/f71c23eb76f050d6180490e82d58d799.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/871/8713411d5332ceb2b4092073a6f5f3f2.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/985/985b56daa78e0a23133518d4226e9f97.jpg"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#name": [
+            {
+                "@value": "BioShock Infinite"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#released": [
+            {
+                "@value": "2013-03-26"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#tba": [
+            {
+                "@value": false
+            }
+        ]
+    },
+    {
+        "@id": "http://www.semanticweb.org/prc/2020/gamingWiki#portal",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "http://www.semanticweb.org/prc/2020/gamingWiki#Games"
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#short_screenshots": [
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/games/7fa/7fa0b586293c5861ee32490e953a4996.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/99e/99e94bd55eb75fa6e75c3dcbb1a570b2.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/2f0/2f0297a46934d9fa914c626902b1ce20.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/3b3/3b3713fbca6194dfc4d6e8a8d006d354.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/c6f/c6f9afc3e4dd51068b22f04acbc6ca99.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/748/74841207eec76ebc7fc03210168bfb7e.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/e72/e7256b4caedf099bcb8ebd332f892334.jpg"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#name": [
+            {
+                "@value": "Portal"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#released": [
+            {
+                "@value": "2007-10-09"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#tba": [
+            {
+                "@value": false
+            }
+        ]
+    },
+    {
+        "@id": "http://www.semanticweb.org/prc/2020/gamingWiki#life-is-strange-episode-1-2",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "http://www.semanticweb.org/prc/2020/gamingWiki#Games"
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#short_screenshots": [
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/games/562/562553814dd54e001a541e4ee83a591c.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/edf/edfcbdf85f02f871263dabf1b4f0aa87.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/4c6/4c6da2f36396d4ed51f82ba6159fa39b.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/6aa/6aa56ef1485c8b287a913fa842883daa.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/cb1/cb148b52fe857f5b0b83ae9c01f56d8e.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/aea/aea38b33b90054f8fe4cc8bb05253b1d.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/c1d/c1d6333b2da0f920e8de10c14d3c6093.jpg"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#name": [
+            {
+                "@value": "Life is Strange"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#released": [
+            {
+                "@value": "2015-01-29"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#tba": [
+            {
+                "@value": false
+            }
+        ]
+    },
+    {
+        "@id": "http://www.semanticweb.org/prc/2020/gamingWiki#counter-strike-global-offensive",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "http://www.semanticweb.org/prc/2020/gamingWiki#Games"
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#short_screenshots": [
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/games/64b/64bb90ca6b1df8a36d710f6542111142.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/ff1/ff16661bb15f7969b44f6c4118870e44.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/41b/41bb769d247412eac3336dec934aed72.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/754/754545acdbf71f56e8902a07c7d20696.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/fd8/fd873cab4c66db0b8e85d8a66e940074.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/7db/7db2954f7908b6749c36a5f3c9052f65.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/337/337a3e98b5933f456a2b37b59fab5f39.jpg"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#name": [
+            {
+                "@value": "Counter-Strike: Global Offensive"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#released": [
+            {
+                "@value": "2012-08-21"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#tba": [
+            {
+                "@value": false
+            }
+        ]
+    },
+    {
+        "@id": "http://www.semanticweb.org/prc/2020/gamingWiki#tomb-raider",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "http://www.semanticweb.org/prc/2020/gamingWiki#Games"
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#short_screenshots": [
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/games/81b/81b138691f027ed1f8720758daa0d895.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/4f9/4f9d5efdecfb63cb99f1baa4c0ceb3bf.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/80f/80f373082b2a74da3f9c3fe2b877dcd0.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/a87/a8733e877f8fbe45e4a727c22a06aa2e.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/3f9/3f91678c6805a76419fa4ea3a045a909.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/417/4170bf07be43a8d8249193883f87f1c1.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/2a4/2a4250f83ad9e959d8b4ca9376ae34ea.jpg"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#name": [
+            {
+                "@value": "Tomb Raider (2013)"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#released": [
+            {
+                "@value": "2013-03-05"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#tba": [
+            {
+                "@value": false
+            }
+        ]
+    },
+    {
+        "@id": "http://www.semanticweb.org/prc/2020/gamingWiki#limbo",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "http://www.semanticweb.org/prc/2020/gamingWiki#Games"
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#short_screenshots": [
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/games/929/9295e55ce69cf5337c567983cf8b4137.jpeg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/512/512f4bc2092016478ddcb9e7e60aeec0.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/63d/63d30699e8fcab9c808e6714d9d3fd59.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/de0/de04bbc0fd9904071ef25bf23113c8c4.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/eed/eedbbca4ae2debf2d4e23e55d1f6cff7.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/59f/59f472b3ed7b414777a29213d70b4d17.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/4a8/4a8c625374918e96e74948189e90c20b.jpg"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#name": [
+            {
+                "@value": "Limbo"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#released": [
+            {
+                "@value": "2010-07-21"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#tba": [
+            {
+                "@value": false
+            }
+        ]
+    },
+    {
+        "@id": "http://www.semanticweb.org/prc/2020/gamingWiki#half-life-2",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "http://www.semanticweb.org/prc/2020/gamingWiki#Games"
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#short_screenshots": [
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/games/b8c/b8c243eaa0fbac8115e0cdccac3f91dc.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/8af/8af6188357426890cbc8c8a34d9e7b75.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/3b5/3b542c954ba5bd2f32da067c8122cd80.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/3d6/3d6066e45d259d2e83bf6767e6113d94.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/e49/e49327df2404df6c5dafa8eac7990852.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/5dd/5dd3e53131bbfe6278bd15b9abe261a0.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/e99/e995e154d4f9e2df0367adea528a72c5.jpg"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#name": [
+            {
+                "@value": "Half-Life 2"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#released": [
+            {
+                "@value": "2004-11-16"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#tba": [
+            {
+                "@value": false
+            }
+        ]
+    },
+    {
+        "@id": "http://www.semanticweb.org/prc/2020/gamingWiki#bioshock",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "http://www.semanticweb.org/prc/2020/gamingWiki#Games"
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#short_screenshots": [
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/games/bc0/bc06a29ceac58652b684deefe7d56099.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/01f/01f62d7064838a5c3202acfc61503487.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/7f5/7f517e07e36e4af5a7c0b86a7d42853f.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/aca/aca089b963a42ec4cbf56b5e5334af8e.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/3aa/3aa6f71eba1d64e671bd45826ca96560.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/d8e/d8ed29c7c0b41e4013588847944ed446.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/146/146e418797aca19296f90d259207414c.jpg"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#name": [
+            {
+                "@value": "BioShock"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#released": [
+            {
+                "@value": "2007-08-21"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#tba": [
+            {
+                "@value": false
+            }
+        ]
+    },
+    {
+        "@id": "http://www.semanticweb.org/prc/2020/gamingWiki#team-fortress-2",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "http://www.semanticweb.org/prc/2020/gamingWiki#Games"
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#short_screenshots": [
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/games/8e0/8e032ac4faf1136e7d708bb3ac61af23.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/596/5968ba06bac8bee0ec7e9d03c970c421.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/94f/94f4eb0b3d1fde7a37ec84f0f66f7f87.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/a0a/a0ad82cad18d0a2466d1d5f12bf8858c.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/a83/a83038d2ec296522ab1b9ab0521b1ec3.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/8d4/8d488a3e65256ec777c8097b0faacc78.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/707/707c7488bd6e35bc74d274a923bc1df2.jpg"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#name": [
+            {
+                "@value": "Team Fortress 2"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#released": [
+            {
+                "@value": "2007-10-10"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#tba": [
+            {
+                "@value": false
+            }
+        ]
+    },
+    {
+        "@id": "http://www.semanticweb.org/prc/2020/gamingWiki#payday-2",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "http://www.semanticweb.org/prc/2020/gamingWiki#Games"
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#short_screenshots": [
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/games/73e/73eecb8909e0c39fb246f457b5d6cbbe.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/c38/c38f5aa479eebab20cedcdae370e6e18.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/442/442be5656b314e3289ecd1486b5282f1.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/c2c/c2ccfeaeda357f932d1899a91f298850.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/a18/a18da938def6ce6e5b571f1c20272ab0.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/a5d/a5da0d01195f01cdedec974d52892128.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/4ee/4ee5c3c8b850ab4ba8e04b9f5d5ab060.jpg"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#name": [
+            {
+                "@value": "PAYDAY 2"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#released": [
+            {
+                "@value": "2013-08-13"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#tba": [
+            {
+                "@value": false
+            }
+        ]
+    },
+    {
+        "@id": "http://www.semanticweb.org/prc/2020/gamingWiki#fallout-4",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "http://www.semanticweb.org/prc/2020/gamingWiki#Games"
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#short_screenshots": [
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/games/c88/c885ae6a24bbce21df93b6c4e1c78899.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/f55/f5598897e0e418c67521f2213dceb459.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/37c/37ce90b25d84e531743917165115d24c.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/fd3/fd3a97519e6d1b73f429f6bfcfb3bcf5.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/069/0691b4c1b839e55531d8c3206cd83dd7.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/cc0/cc0b3e29b579faae8d8585fd9ecff142.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/99c/99c81029aeace339293753186246099f.jpg"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#name": [
+            {
+                "@value": "Fallout 4"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#released": [
+            {
+                "@value": "2015-11-09"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#tba": [
+            {
+                "@value": false
+            }
+        ]
+    },
+    {
+        "@id": "http://www.semanticweb.org/prc/2020/gamingWiki#doom",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "http://www.semanticweb.org/prc/2020/gamingWiki#Games"
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#short_screenshots": [
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/games/c4b/c4b0cab189e73432de3a250d8cf1c84e.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/353/353c1e834e7da7d6ceaa6beaff529c29.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/e50/e50f822107b8cc6af57aa21d76524149.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/ae9/ae9e9f7bfe19c63bd16151f81f81a7ed.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/14e/14e33eccb109558b0524761340ff2023.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/45d/45d16955ac9e90141b726684a07db02a.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/b77/b77629938389a41160d3b2a56eaed568.jpg"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#name": [
+            {
+                "@value": "DOOM (2016)"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#released": [
+            {
+                "@value": "2016-05-13"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#tba": [
+            {
+                "@value": false
+            }
+        ]
+    },
+    {
+        "@id": "http://www.semanticweb.org/prc/2020/gamingWiki#grand-theft-auto-iv",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "http://www.semanticweb.org/prc/2020/gamingWiki#Games"
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#short_screenshots": [
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/games/4a0/4a0a1316102366260e6f38fd2a9cfdce.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/07f/07f7cf80741ff306e4eca982c3e64ac8.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/fef/fefd51ec13aa33acbd796ef79bcef7cb.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/b78/b78ffd258d5793be704c380e572748bc.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/17c/17c85ab9dfc4fda8e1e5ba72932ef2bf.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/a12/a12ca99cc74c1e7eba7100b0891dd1e0.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/b25/b254f9729ae3f36a9ccffccaa01d5cf6.jpg"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#name": [
+            {
+                "@value": "Grand Theft Auto IV"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#released": [
+            {
+                "@value": "2008-04-29"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#tba": [
+            {
+                "@value": false
+            }
+        ]
+    },
+    {
+        "@id": "http://www.semanticweb.org/prc/2020/gamingWiki#dota-2",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "http://www.semanticweb.org/prc/2020/gamingWiki#Games"
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#short_screenshots": [
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/games/83f/83f6f70a7c1b86cd2637b029d8b42caa.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/cef/cefd0f45c88be2d6e2ff7eed94c16cf3.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/e2a/e2a1a6c8b07bcdb91d7c6050b16854c5.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/55e/55e2c2ff16229eef87cfd8728ca537ac.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/601/601ceb08d04da42f4de5d8b9016f31a6.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/f02/f02a389dafd748b801cb4ff971a868af.jpg"
+            },
+            {
+                "@value": "http://www.semanticweb.org/prc/2020/gamingWiki#https://media.rawg.io/media/screenshots/da6/da6e4cba4e5787674d0e6877d1fc426a.jpg"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#name": [
+            {
+                "@value": "Dota 2"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#released": [
+            {
+                "@value": "2013-07-09"
+            }
+        ],
+        "http://www.semanticweb.org/prc/2020/gamingWiki#tba": [
+            {
+                "@value": false
+            }
+        ]
+    }
+]
