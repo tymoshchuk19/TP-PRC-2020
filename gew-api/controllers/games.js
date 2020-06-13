@@ -41,8 +41,58 @@ Games.getLaunched = async function(){
     } 
 }
 
-Games.getPage = async function(page){
-    s = slugs()
+
+Games.getUpcoming = async function(){
+    var today = new Date();
+    var date = today.getFullYear()+'-'+pad(today.getMonth()+1, 2)+'-'+pad(today.getDate()+1, 2);
+    var dateTime = date+'T'+'00:00:00+00:00';
+    var query = `
+    select ?slug ?released where {
+        ?slug rdf:type gew:Games .
+        ?slug gew:released ?released .
+        ?slug gew:tba false .
+        filter(?released > "${dateTime}"^^xsd:dateTime) .
+    }
+    ORDER BY DESC(?released)
+    ` 
+
+    var encoded = encodeURIComponent(prefixes + query)
+
+    try{
+        var response = await axios.get(getLink + encoded)
+        return myNormalize(response.data)
+    }
+    catch(e){
+        throw(e)
+    } 
+}
+
+
+Games.getTBA = async function(){
+    var query = `
+    select ?slug ?released where {
+        ?slug rdf:type gew:Games .
+        ?slug gew:released ?released .
+        ?slug gew:tba true .
+    }
+    ORDER BY DESC(?released)
+    ` 
+
+    var encoded = encodeURIComponent(prefixes + query)
+
+    try{
+        var response = await axios.get(getLink + encoded)
+        return myNormalize(response.data)
+    }
+    catch(e){
+        throw(e)
+    } 
+}
+
+
+
+Games.getPage = async function(page, tab){
+    s = slugs()[tab]
     var games = []
     var slug = ''
     for (i = (5 * page); i < (5 * (parseInt(page) + 1)); i++){

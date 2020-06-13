@@ -42,37 +42,37 @@
 <script>
 import axios from 'axios'
   export default {
-    props: ['tab'], 
-    methods: {
-      scroll () {
-        window.onscroll = () => {
-          let bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight === document.documentElement.offsetHeight
-
-          if (bottomOfWindow) {
-            this.scrolledToBottom = true // replace it with your code
+    props: ['ntab', 'act', 'ss'], 
+    watch: {
+      ss(nv) {
+        if(this.act == this.tab) 
+          if(nv){
             this.page += 1
             this.getGames()
           }
-        }
-      },
+        else console.log('tab:', this.tab)
+      } ,
+    },
+    methods: {
       getGames(){
+        console.log('tab:', this.tab, 'page: ',this.page)
         axios.get(`http://localhost:1919/${this.tab}/${this.page}`)
           .then(data => {
             const array1 = this.items;
             this.items = [...array1, ...data.data];
-            this.scrolledToBottom = false
+            this.$emit('scroll', false)
           })
           .catch(error => console.log(error));
       }
     },
     mounted() {
-      this.getGames()
-      this.scroll()
+      this.tab = this.ntab;
+      this.getGames();
     },
     data: () => ({
+      tab: 0,
       items: [],
-      page: 0,
-      scrolledToBottom: false
+      page: 0
     }),
   }
 </script>

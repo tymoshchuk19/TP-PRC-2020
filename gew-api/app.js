@@ -17,7 +17,9 @@ const corsOpts = {
     allowedHeaders: ['Accept', 'Authorization', 'Cache-Control', 'Content-Type', 'DNT', 'If-Modified-Since', 'Keep-Alive', 'Origin', 'User-Agent', 'X-Requested-With', 'Content-Length']
 }
 
-slugs.loadSlugs()
+slugs.loadLaunched()
+slugs.loadUpcoming()
+slugs.loadTBA()
 
 app.use(cors(corsOpts))
 app.use(logger('dev'));

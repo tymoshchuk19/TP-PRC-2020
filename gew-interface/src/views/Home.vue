@@ -12,16 +12,17 @@
       <v-tabs-slider></v-tabs-slider>
 
       <v-tab
-        v-for="i in tabs"
+        v-for="(t,i) in titles"
         :key="i"
         :href="`#tab-${i}`"
+        @click="activetab = i"
       >
-        {{ titles[i-1] }}
+        {{ t }}
         <v-icon v-if="icons">mdi-phone</v-icon>
       </v-tab>
 
       <v-tab-item
-        v-for="i in tabs"
+        v-for="(t,i) in titles"
         :key="i"
         :value="'tab-' + i"
       >
@@ -29,7 +30,7 @@
           flat
           tile
         >
-          <TimeLine :tab="i"/>
+          <TimeLine :ntab="i" :act="activetab" :ss="scrolledToBottom" @scroll="scrolledToBottom = false"/>
         </v-card>
       </v-tab-item>
     </v-tabs>
@@ -45,6 +46,20 @@ export default {
   components: {
     TimeLine
   },
+  methods: {
+    scroll () {
+        window.onscroll = () => {
+          let bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight === document.documentElement.offsetHeight
+
+          if (bottomOfWindow) {
+            this.scrolledToBottom = true // replace it with your code;
+          }
+        }
+      }
+  },
+  mounted() {
+      this.scroll();
+  },
   data () {
       return {
         tab: null,
@@ -54,7 +69,8 @@ export default {
         grow: true,
         prevIcon: false,
         nextIcon: false,
-        tabs: 3,
+        activetab: 0,
+        scrolledToBottom: false
       }
     }
 }
