@@ -20,6 +20,12 @@ var gamesld16 = [];
 
 
 try {
+<<<<<<< HEAD:jsons/jsonToJsonLD/jsonTojsonldGames.js
+    const jsonString = fs.readFileSync('../games.json')
+    const games = JSON.parse(jsonString)
+    var prefix = "http://www.semanticweb.org/prc/2020/gamingWiki#"
+    var gamesld = [];
+=======
     for(var i = 1; i < 68; i++){
         const jsonString = fs.readFileSync(`./jsons/games/games${i}.json`)
         const games = JSON.parse(jsonString)
@@ -59,6 +65,7 @@ try {
                 }],
                 "http://www.semanticweb.org/prc/2020/gamingWiki#hasGenre" : genres
             }
+>>>>>>> 68606bb952dfbecfc55f5fcbe7af3757dcf82006:jsonTojsonldGames.js
 
             if (i < 5)
                 gamesld1.push(newgame);
@@ -93,6 +100,33 @@ try {
             else 
                 gamesld16.push(newgame);
         });
+<<<<<<< HEAD:jsons/jsonToJsonLD/jsonTojsonldGames.js
+        var newgame = {
+            "@id": prefix + element.slug,
+            "@type": [ "http://www.w3.org/2002/07/owl#NamedIndividual", prefix + "Games" ],
+            "http://www.semanticweb.org/prc/2020/gamingWiki#short_screenshots": screenShots, 
+            "http://www.semanticweb.org/prc/2020/gamingWiki#name": [{
+                "@value": element.name
+            }],
+            "http://www.semanticweb.org/prc/2020/gamingWiki#released": [{
+                "@value": element.released
+            }],
+            "http://www.semanticweb.org/prc/2020/gamingWiki#tba": [{
+                "@value": element.tba
+            }]
+        }
+        gamesld.push(newgame);
+    });
+    console.log(gamesld);
+    const gamesString = JSON.stringify(gamesld);
+    fs.writeFile('../../individuals/games.jsonld', gamesString, err => {
+        if (err) {
+            console.log('Error writing file', err)
+        } else {
+            console.log('Successfully wrote file')
+        }
+    })
+=======
     }
 
     al[0] = gamesld1;
@@ -122,6 +156,7 @@ try {
             }
         })
     }
+>>>>>>> 68606bb952dfbecfc55f5fcbe7af3757dcf82006:jsonTojsonldGames.js
 } catch(err) {
     console.log(err)
 }

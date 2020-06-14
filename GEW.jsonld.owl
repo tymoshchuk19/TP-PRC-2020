@@ -27,7 +27,10 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ]
 }, {
   "@id" : "http://www.semanticweb.org/prc/2020/gamingWiki#name",
-  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
 }, {
   "@id" : "http://www.semanticweb.org/prc/2020/gamingWiki#rating",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ]
@@ -50,10 +53,43 @@
   "@id" : "http://www.semanticweb.org/ricardocanela/ontologies/2020/4/gamingWiki",
   "@type" : [ "http://www.w3.org/2002/07/owl#Ontology" ]
 }, {
+  "@id" : "http://www.semanticweb.org/ricardocanela/ontologies/2020/4/gamingWiki#Users",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://www.semanticweb.org/ricardocanela/ontologies/2020/4/gamingWiki#email",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/ricardocanela/ontologies/2020/4/gamingWiki#hasFavorite",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.semanticweb.org/ricardocanela/ontologies/2020/4/gamingWiki#Users"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.semanticweb.org/prc/2020/gamingWiki#Games"
+  } ]
+}, {
   "@id" : "http://www.semanticweb.org/ricardocanela/ontologies/2020/4/gamingWiki#minetest",
   "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.semanticweb.org/prc/2020/gamingWiki#Games" ],
   "http://www.semanticweb.org/prc/2020/gamingWiki#released" : [ {
     "@type" : "http://www.w3.org/2001/XMLSchema#dateTime",
     "@value" : "2001-10-26T00:00:00"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/ricardocanela/ontologies/2020/4/gamingWiki#password",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/ricardocanela/ontologies/2020/4/gamingWiki#wishes",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.semanticweb.org/ricardocanela/ontologies/2020/4/gamingWiki#Users"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.semanticweb.org/prc/2020/gamingWiki#Games"
   } ]
 } ]

@@ -11,10 +11,17 @@ var developersld8 = [];
 var developersld9 = []; 
 var developersld10 = []; 
 try {
+<<<<<<< HEAD:jsons/jsonToJsonLD/jsonTojsonldDevelopers.js
+    const jsonString = fs.readFileSync('../developers.json')
+    const developers = JSON.parse(jsonString)
+    var prefix = "http://www.semanticweb.org/prc/2020/gamingWiki#"
+    var developersld = [];
+=======
     for(var i = 1; i < 11; i++){
         const jsonString = fs.readFileSync(`./jsons/devs/totaldevs${i}.json`)
         const developers = JSON.parse(jsonString)
         var prefix = "http://www.semanticweb.org/prc/2020/gamingWiki#"
+>>>>>>> 68606bb952dfbecfc55f5fcbe7af3757dcf82006:jsonTojsonldDevelopers.js
 
         developers.forEach(element => {
             var developed = [];
@@ -53,6 +60,27 @@ try {
         else 
             developersld10.push(newDeveloper)
         });
+<<<<<<< HEAD:jsons/jsonToJsonLD/jsonTojsonldDevelopers.js
+        var newDeveloper = {
+            "@id": prefix + element.slug,
+            "@type": [ "http://www.w3.org/2002/07/owl#NamedIndividual", prefix + "Developers" ],
+            "http://www.semanticweb.org/prc/2020/gamingWiki#developed": developed, 
+            "http://www.semanticweb.org/prc/2020/gamingWiki#name": [{
+                "@value": element.name
+            }] 
+        }
+        developersld.push(newDeveloper);
+    });
+    console.log(developersld);
+    const developersString = JSON.stringify(developersld);
+    fs.writeFile('../../individuals/developers.jsonld', developersString, err => {
+        if (err) {
+            console.log('Error writing file', err)
+        } else {
+            console.log('Successfully wrote file')
+        }
+    })
+=======
 
     }
 
@@ -78,6 +106,7 @@ try {
             }
         })
     }
+>>>>>>> 68606bb952dfbecfc55f5fcbe7af3757dcf82006:jsonTojsonldDevelopers.js
 } catch(err) {
     console.log(err)
 }

@@ -1,6 +1,7 @@
 var Games = module.exports
 var slugs = require('../config/slugs').slugs;
 const axios = require('axios')
+var host = require('../config/databases').host;
 
 
 var prefixes = `
@@ -13,7 +14,7 @@ var prefixes = `
     PREFIX gew: <http://www.semanticweb.org/prc/2020/gamingWiki#>
 `
 
-var getLink = "http://localhost:7200/repositories/GEW" + "?query=" 
+var getLink = host + "?query=" 
 
 
 Games.getLaunched = async function(){
