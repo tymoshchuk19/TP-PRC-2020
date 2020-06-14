@@ -8,9 +8,9 @@ const loadLaunched = async () => {
             dados.forEach(game => { 
                 slugs[0].push(game.slug); 
             })
+            console.log('[Launched] loaded')
         })
         .catch(e => console.log(`Erro na listagem dos jogos: ${e}`))
-    console.log('[Launched] loaded')
 }
 
 const loadUpcoming = async () => {
@@ -20,9 +20,9 @@ const loadUpcoming = async () => {
             dados.forEach(game => { 
                 slugs[1].push(game.slug); 
             })
+            console.log('[Upcoming] loaded')
         })
         .catch(e => console.log(`Erro na listagem dos jogos: ${e}`))
-    console.log('[Upcoming] loaded')
 }
 
 const loadTBA = async () => {
@@ -32,9 +32,9 @@ const loadTBA = async () => {
             dados.forEach(game => { 
                 slugs[2].push(game.slug); 
             })
+            console.log('[TBA] loaded')
         })
         .catch(e => console.log(`Erro na listagem dos jogos: ${e}`))
-    console.log('[TBA] loaded')
 }
 
 exports.loadLaunched = loadLaunched

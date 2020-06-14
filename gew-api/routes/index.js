@@ -4,10 +4,18 @@ var Games = require('../controllers/games')
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  Games.getLaunched()
-    .then(dados => res.jsonp(dados))
-    .catch(e => res.status(500).send(`Erro na listagem dos jogos: ${e}`))
+// router.get('/', function(req, res, next) {
+//   Games.getLaunched()
+//     .then(dados => res.jsonp(dados))
+//     .catch(e => res.status(500).send(`Erro na listagem dos jogos: ${e}`))
+// });
+
+router.get('/:name', async function(req, res, next) {
+  Games.getGames(decodeURIComponent(req.params.name))
+    .then(dados => {
+      res.jsonp(dados)
+    })
+    .catch(e => res.status(500).send(`Erro na listagem da página ${req.params.page}: ${e}`))
 });
 
 /* GET home page. */
@@ -17,11 +25,6 @@ router.get('/:tab/:page', async function(req, res, next) {
     .catch(e => res.status(500).send(`Erro na listagem da página ${req.params.page}: ${e}`))
 });
 
-// router.get('/1/:page', async function(req, res, next) {
-//   Games.getPage(req.params.page, 1)
-//     .then(dados => res.jsonp(dados))
-//     .catch(e => res.status(500).send(`Erro na listagem da página ${req.params.page}: ${e}`))
-// });
 
 // router.get('/2/:page', async function(req, res, next) {
 //   Games.getPage(req.params.page, 2)

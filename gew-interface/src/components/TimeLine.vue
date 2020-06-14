@@ -11,8 +11,14 @@
         <v-row>
           <v-col>
             <span
+              v-if="item.released.split('T')[0]!='null'"
               :class="`headline font-weight-bold blue--text`"
               v-text="item.released.split('T')[0]"
+            ></span>
+            <span
+              v-else
+              :class="`headline font-weight-bold blue--text`"
+              v-text="'tba'"
             ></span>
           </v-col>
         </v-row>

@@ -53,7 +53,7 @@ Games.getUpcoming = async function(){
         ?slug gew:tba false .
         filter(?released > "${dateTime}"^^xsd:dateTime) .
     }
-    ORDER BY DESC(?released)
+    ORDER BY ?released
     ` 
 
     var encoded = encodeURIComponent(prefixes + query)
@@ -89,8 +89,6 @@ Games.getTBA = async function(){
     } 
 }
 
-
-
 Games.getPage = async function(page, tab){
     s = slugs()[tab]
     var games = []
@@ -122,26 +120,61 @@ Games.getPage = async function(page, tab){
     return games
 }
 
-Games.getGame = async function(slug){
-    var query = `
-    select ?g ?name ?rating ?background_image ?released where {
-        ?g rdf:type gew:Games .
-        filter( str(?g) = ${slug}) .
-        ?g gew:name ?name .
-        ?g gew:rating ?rating .
-        ?g gew:background_image ?background_image .
-        ?g gew:released ?released .
-    }`
+// Games.getGame = async function(slug){
+//     var query = `
+//     select ?g ?name ?rating ?background_image ?released where {
+//         ?g rdf:type gew:Games .
+//         filter( str(?g) = ${slug}) .
+//         ?g gew:name ?name .
+//         ?g gew:rating ?rating .
+//         ?g gew:background_image ?background_image .
+//         ?g gew:released ?released .
+//     }`
 
-    var encoded = encodeURIComponent(prefixes + query)
+//     var encoded = encodeURIComponent(prefixes + query)
 
-    try{
-        var response = await axios.get(getLink + encoded)
-        return myNormalize(response.data)
+//     try{
+//         var response = await axios.get(getLink + encoded)
+//         return myNormalize(response.data)
+//     }
+//     catch(e){
+//         throw(e)
+//     } 
+// }
+
+Games.getGames = async function(name){
+    s = slugs()[0]
+    var games = []
+    var slug = ''
+    var top = 10
+    for(var i = 0; i < s.length && top != 0; i++){
+        if (matches(s[i], name)) {
+            slug = s[i].split('#')[1]
+            var query = `
+            select ?g ?name ?rating ?background_image ?released where { 
+                gew:${slug} rdf:type gew:Games ;
+                gew:name ?name ;
+                gew:rating ?rating ;
+                gew:background_image ?background_image ;
+                gew:released ?released .
+            }`
+    
+            var encoded = encodeURIComponent(prefixes + query)
+    
+            try {
+                var response = await axios.get(getLink + encoded)
+                var arr = myNormalize(response.data)
+                if (arr[0] != null){
+                    games.push(arr[0]);
+                    top--;
+                }
+            }
+            catch(e){
+                console.log('error: ' + slug)
+            }
+        }
     }
-    catch(e){
-        throw(e)
-    } 
+    return games
 }
 
 function myNormalize(r){
@@ -158,4 +191,17 @@ function pad(num, size) {
     var s = num+"";
     while (s.length < size) s = "0" + s;
     return s;
+}
+
+function matches(s, n){
+    names = n.split(' ')
+    ret = false
+    for(var i = 0; i<names.length; i++)
+        if(s.includes(names[i])) {
+            ret = true
+        } else {
+            ret = false;
+            break;
+        }
+    return ret
 }
