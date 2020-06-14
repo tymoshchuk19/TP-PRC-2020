@@ -1,4 +1,5 @@
 const fs = require('fs')
+
 try {
     const jsonString = fs.readFileSync('../genres.json')
     const genres = JSON.parse(jsonString)
@@ -6,16 +7,9 @@ try {
     var genresld = [];
 
     genres.results.forEach(element => {
-        var isGenreOf = [];
-        element.games.forEach(elem => {
-            isGenreOf.push({
-                "@id": prefix + elem.slug
-            })
-        });
         var newGenre = {
             "@id": prefix + element.slug,
             "@type": [ "http://www.w3.org/2002/07/owl#NamedIndividual", prefix + "Genres" ],
-            "http://www.semanticweb.org/prc/2020/gamingWiki#isGenreOf": isGenreOf, 
             "http://www.semanticweb.org/prc/2020/gamingWiki#name": [{
                 "@value": element.name
             }] 
