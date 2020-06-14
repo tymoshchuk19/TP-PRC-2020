@@ -1,11 +1,12 @@
 <template>
   <v-app>
     <v-app-bar
+      height="90%"
       app
       color="primary"
       dark
     >
-      <v-row>
+      <v-row class="mt-8 mb-2">
         <v-col cols=3>
           <v-btn
             text
@@ -20,6 +21,10 @@
             :items="items"
             v-model="game"
             :rules="rules"
+            outlined
+            dense
+            hide-selected
+            allow-overflow
             label="Find your favorite game."
           >
             <template v-slot:item="{ index, item }">
@@ -49,13 +54,16 @@
           </v-combobox>
         </v-col>
       </v-row>
+      
       <v-spacer></v-spacer>
 
       <v-btn
+        v-if="$store.state.username"
         text
+        @click="drawAccount = !drawAccount"
       >
-        <span class="mr-2">Logout</span>
-        <v-icon class="secondary blue--text">mdi-open-in-new</v-icon>
+        <v-icon class="mr-3">mdi-account</v-icon>
+        <span class="mr-2"> {{$store.state.username}} </span>
       </v-btn>
     </v-app-bar>
 
@@ -75,16 +83,19 @@
     >
       <v-icon>mdi-arrow-up</v-icon>
     </v-btn>
+    <Account :drawer="drawAccount"/>
   </v-app>
 </template>
 
 <script>
 import axios from 'axios'
+import Account from "@/components/Account.vue";
 
 export default {
   name: 'App',
 
   components: {
+    Account
   },
   watch: {
     game(nv){
@@ -102,7 +113,7 @@ export default {
     },
     getGames(){
       console.log('carreguei jogos')
-      axios.get(`http://localhost:1919/${this.game}`)
+      axios.get(`http://192.168.1.160:1919/${this.game}`)
         .then(data => {
           this.items = data.data;
         })
@@ -111,10 +122,11 @@ export default {
   },
   data: () => ({
     game: '',
+    drawAccount: false,
     fab: false,
     items: [],
     rules: [
-        value => (value && value.length >= 2) || 'Min 2 characters',
+        value => (value && value.length >= 0) || 'Min 2 characters',
       ],
   }),
 };

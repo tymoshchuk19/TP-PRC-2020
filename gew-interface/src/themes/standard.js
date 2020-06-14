@@ -5,5 +5,5 @@ module.exports.theme = {
         error: '#ff4444',
         info: '#33b5e5',
         success: '#00C851',
-        warning: '#ffbb33'
+        warning: '#E65100'
     }

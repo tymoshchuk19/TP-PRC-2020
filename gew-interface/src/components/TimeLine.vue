@@ -18,7 +18,7 @@
             <span
               v-else
               :class="`headline font-weight-bold blue--text`"
-              v-text="'tba'"
+              v-text="'To be announced'"
             ></span>
           </v-col>
         </v-row>
@@ -61,8 +61,7 @@ import axios from 'axios'
     },
     methods: {
       getGames(){
-        console.log('tab:', this.tab, 'page: ',this.page)
-        axios.get(`http://localhost:1919/${this.tab}/${this.page}`)
+        axios.get(`http://192.168.1.160:1919/${this.tab}/${this.page}`)
           .then(data => {
             const array1 = this.items;
             this.items = [...array1, ...data.data];

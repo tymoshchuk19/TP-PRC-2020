@@ -197,7 +197,7 @@ function matches(s, n){
     names = n.split(' ')
     ret = false
     for(var i = 0; i<names.length; i++)
-        if(s.includes(names[i])) {
+        if(s.includes(names[i].toLowerCase())) {
             ret = true
         } else {
             ret = false;
