@@ -1,6 +1,6 @@
 const fs = require('fs')
 try {
-    const jsonString = fs.readFileSync('./jsons/developers.json')
+    const jsonString = fs.readFileSync('../developers.json')
     const developers = JSON.parse(jsonString)
     var prefix = "http://www.semanticweb.org/prc/2020/gamingWiki#"
     var developersld = [];
@@ -24,7 +24,7 @@ try {
     });
     console.log(developersld);
     const developersString = JSON.stringify(developersld);
-    fs.writeFile('./individuals/developers.jsonld', developersString, err => {
+    fs.writeFile('../../individuals/developers.jsonld', developersString, err => {
         if (err) {
             console.log('Error writing file', err)
         } else {
