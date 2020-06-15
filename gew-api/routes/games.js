@@ -18,6 +18,13 @@ router.get('/:name', async function(req, res, next) {
     .catch(e => res.status(500).send(`Erro na listagem da página ${req.params.page}: ${e}`))
 });
 
+/*GET filtered page. */
+router.get('/:tab/:page/:filter/:fValue', async function(req, res, next) {
+  Games.getPage(req.params.page, req.params.tab, req.params.filter, req.params.fValue)
+    .then(dados => res.jsonp(dados))
+    .catch(e => res.status(500).send(`Erro na listagem da página ${req.params.page}: ${e}`))
+});
+
 /* GET home page. */
 router.get('/:tab/:page', async function(req, res, next) {
   Games.getPage(req.params.page, req.params.tab)
