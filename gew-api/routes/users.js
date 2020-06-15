@@ -9,7 +9,7 @@ router.post('/register', (req, res) => {
     const user = req.body
     Users.newUser(user)
       .then(user => res.json(user))
-      .catch(e => res.status(500).send(`Erro no registro do utilizador ${user.name}: ${e}`))
+      .catch(e => res.status(500).send(`Erro no registro do utilizador ${user.body.name}: ${e}`))
   });
   
 router.post('/authenticate', (req, res) => {

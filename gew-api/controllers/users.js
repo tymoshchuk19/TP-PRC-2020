@@ -21,11 +21,10 @@ var getLink = host + "?query="
 Users.getUser = async function(name){
     var query = `
     select ?name ?password ?email where {
-        ?user rdf:type gew:Users .
-        ?user gew:name "${name}" .
-        ?user gew:name ?name .
-        ?user gew:password ?password .
-        ?user gew:email ?email .
+        gew:${name} rdf:type gew:Users ;
+        gew:name ?name ;
+        gew:password ?password ;
+        gew:email ?email .
     } 
     ` 
     var encoded = encodeURIComponent(prefixes + query)
@@ -34,27 +33,28 @@ Users.getUser = async function(name){
         var response = await axios.get(getLink + encoded)
         return myNormalize(response.data)[0]
     }
-    catch(e){3
+    catch(e){
         throw(e)
     } 
 }
 
 Users.newUser = async function(newUser){
-    var updateLink = host + "/statements?infer=true&sameAs=true&update=" 
+    var updateLink = host + "/statements?update=" 
 
     var query = `
     INSERT DATA
     { 
         graph <http://www.semanticweb.org/prc/2020/gamingWiki#> 
         { 
-            gew:${newUser.name} gew:name "${newUser.name}" .
-            gew:${newUser.name} gew:password "${newUser.password}" .
-            gew:${newUser.name} gew:email "${newUser.email}" .
-            gew:${newUser.name} rdf:type owl:NamedIndividual.
-            gew:${newUser.name} rdf:type gew:Users.
+            gew:${newUser.username} rdf:type gew:Users ;
+            rdf:type owl:NamedIndividual ;
+            gew:name "${newUser.username}" ;
+            gew:password "${newUser.password}" ;
+            gew:email "${newUser.email}" .
         } 
     }
-    ` 
+    `
+    
     var encoded = encodeURIComponent(prefixes + query)
 
     try{
@@ -72,8 +72,8 @@ Users.newUser = async function(newUser){
       */
             
 
-        console.log(`Registo do utilizador ${newUser.name}: ${myNormalize(response.data)}.`)
-        return myNormalize(response.data)
+        console.log(`Registo do utilizador ${newUser.name}.`)
+        return newUser
     }
     catch(e){
         throw(e)

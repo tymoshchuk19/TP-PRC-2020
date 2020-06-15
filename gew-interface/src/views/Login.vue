@@ -66,7 +66,7 @@ import qs from 'querystring'
     }),
     methods: {
       login(){
-        axios.post('http://192.168.1.160:1919/users/authenticate', qs.stringify({
+        axios.post('http://localhost:1919/users/authenticate', qs.stringify({
           username: this.username,
           password: this.password,
         }), {
@@ -78,6 +78,7 @@ import qs from 'querystring'
             if(data.data.token) {
               this.$store.commit('setToken', data.data.token);
               this.$store.commit('setUsername', this.username);
+              console.log(this.$store.state.token)
               this.$router.push('/');
             } else {
               alert('Credenciais inválidas' )

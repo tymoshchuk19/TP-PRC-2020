@@ -61,7 +61,7 @@ import axios from 'axios'
     },
     methods: {
       getGames(){
-        axios.get(`http://192.168.1.160:1919/${this.tab}/${this.page}`)
+        axios.get(`http://localhost:1919/${this.tab}/${this.page}`)
           .then(data => {
             const array1 = this.items;
             this.items = [...array1, ...data.data];
