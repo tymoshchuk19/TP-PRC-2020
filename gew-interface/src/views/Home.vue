@@ -26,6 +26,22 @@
         :key="i"
         :value="'tab-' + i"
       >
+        <v-overflow-btn
+          class="my-2"
+          :items="genres"
+          label="Genre"
+          editable
+          item-value="text"
+        ></v-overflow-btn>
+
+        <v-overflow-btn
+          class="my-2"
+          :items="developers"
+          label="Developer"
+          editable
+          item-value="text"
+        ></v-overflow-btn>
+
         <v-card
           flat
           tile
@@ -40,6 +56,8 @@
 <script>
 // @ is an alias to /src
 import TimeLine from '@/components/TimeLine.vue'
+import axios from 'axios'
+
 export default {
   name: 'Home',
   components: {
@@ -54,10 +72,28 @@ export default {
             this.scrolledToBottom = true // replace it with your code;
           }
         }
+      },
+
+      getGenres () {
+        axios.get(`http://localhost:1919/genres`)
+          .then(data => {
+            this.genres = data.data;
+          })
+          .catch(error => console.log(error));
+      },
+
+      getDevelopers () {
+        axios.get(`http://localhost:1919/developers`)
+          .then(data => {
+            this.developers = data.data;
+          })
+          .catch(error => console.log(error));
       }
   },
   mounted() {
       this.scroll();
+      this.getGenres();
+      this.getDevelopers()
   },
   data () {
       return {
@@ -69,7 +105,9 @@ export default {
         prevIcon: false,
         nextIcon: false,
         activetab: 0,
-        scrolledToBottom: false
+        scrolledToBottom: false,
+        genres: [],
+        developers: []
       }
     }
 }

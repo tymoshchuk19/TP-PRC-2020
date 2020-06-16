@@ -61,7 +61,7 @@ Users.newUser = async function(newUser){
         console.log(getLink + encoded)
         var response = await axios.get(updateLink + encoded)            
 
-        console.log(`Registo do utilizador ${newUser.name}.`)
+        console.log(`Registo do utilizador.`)
         return newUser
     }
     catch(e){

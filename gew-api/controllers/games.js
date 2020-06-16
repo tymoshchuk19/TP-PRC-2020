@@ -94,7 +94,7 @@ Games.getPage = async function(page, tab){
     s = slugs()[tab]
     var games = []
     var slug = ''
-    for (i = (5 * page); i < (5 * (parseInt(page) + 1)); i++){
+    for (i = (5 * page); i < (5 * (page + 1)); i++){
         slug = s[i].split('#')[1]
         var query = `
         select ?g ?name ?rating ?background_image ?released where { 
@@ -106,7 +106,6 @@ Games.getPage = async function(page, tab){
         }`
 
         var encoded = encodeURIComponent(prefixes + query)
-
         try{
             var response = await axios.get(getLink + encoded)
             var arr = myNormalize(response.data)
@@ -126,7 +125,7 @@ Games.getFilterPage = async function(page, tab, filter, fValue){
     var games = []
     var slug = ''
     while(games.length < 5){
-        for (i = (5 * page); i < (5 * (parseInt(page) + 1)); i++){
+        for (i = (5 * page); i < (5 * (page + 1)); i++){
             slug = s[i].split('#')[1]
             var query = `
             select ?g ?name ?rating ?background_image ?released where { 
@@ -153,7 +152,12 @@ Games.getFilterPage = async function(page, tab, filter, fValue){
         }
         page++;
     }
-    return games
+    var res = {
+        offset: page,
+        games: games
+    }
+    console.log(res)
+    return res
 }
 
 // Games.getGame = async function(slug){
