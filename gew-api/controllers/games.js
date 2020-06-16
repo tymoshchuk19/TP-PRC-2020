@@ -121,6 +121,41 @@ Games.getPage = async function(page, tab){
     return games
 }
 
+Games.getFilterPage = async function(page, tab, filter, fValue){
+    s = slugs()[tab]
+    var games = []
+    var slug = ''
+    while(games.length < 5){
+        for (i = (5 * page); i < (5 * (parseInt(page) + 1)); i++){
+            slug = s[i].split('#')[1]
+            var query = `
+            select ?g ?name ?rating ?background_image ?released where { 
+                gew:${slug} rdf:type gew:Games ;
+                gew:name ?name ;
+                gew:rating ?rating ;
+                gew:background_image ?background_image ;
+                gew:released ?released .
+                gew:${fValue} gew:${filter} gew:${slug}.
+            }`
+
+            var encoded = encodeURIComponent(prefixes + query)
+
+            try{
+                var response = await axios.get(getLink + encoded);
+                var arr = myNormalize(response.data);
+                if (arr[0] != null){
+                    games.push(arr[0]);
+                }
+            }
+            catch(e){
+                console.log('error: ' + slug)
+            } 
+        }
+        page++;
+    }
+    return games
+}
+
 // Games.getGame = async function(slug){
 //     var query = `
 //     select ?g ?name ?rating ?background_image ?released where {

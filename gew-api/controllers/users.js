@@ -59,18 +59,7 @@ Users.newUser = async function(newUser){
 
     try{
         console.log(getLink + encoded)
-        var response = await axios.get(updateLink + encoded)
-/*
-        var response = await axios.post(updateLink + encoded, qs.stringify({
-            username: "admin",
-            password: "HRdiX4GLyWAVynj"
-            }), {
-                headers: {
-                  'Content-Type': 'application/x-www-form-urlencoded'
-                }
-              })
-      */
-            
+        var response = await axios.get(updateLink + encoded)            
 
         console.log(`Registo do utilizador ${newUser.name}.`)
         return newUser
