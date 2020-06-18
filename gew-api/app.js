@@ -7,6 +7,8 @@ var gamesRouter = require('./routes/games');
 var usersRouter = require('./routes/users');
 var genresRouter = require('./routes/genres');
 var developersRouter = require('./routes/developers');
+var platformsRouter = require('./routes/platforms');
+
 
 
 var slugs = require('./config/slugs')
@@ -33,8 +35,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/genres', genresRouter);
+app.use('/platforms', platformsRouter);
 app.use('/developers', developersRouter);
+app.use('/genres', genresRouter);
 app.use('/users', usersRouter);
 app.use('/', gamesRouter);
 

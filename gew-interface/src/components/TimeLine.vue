@@ -48,7 +48,7 @@
 <script>
 import axios from 'axios'
   export default {
-    props: ['ntab', 'act', 'ss'], 
+    props: ['genre','developer','platform','ntab', 'act', 'ss'], 
     watch: {
       ss(nv) {
         if(this.act == this.tab) 
@@ -58,13 +58,60 @@ import axios from 'axios'
           }
         else console.log('tab:', this.tab)
       } ,
+      genre(){
+        if(this.act == this.tab){
+          this.page = 0;
+          this.getGames()
+        }
+        else console.log('tab:', this.tab)
+      },
+      developer(){
+        if(this.act == this.tab){
+          this.page = 0;
+          this.getGames()
+        }
+        else console.log('tab:', this.tab)
+      },
+      platform(){
+        if(this.act == this.tab){
+          this.page = 0;
+          this.getGames()
+        }
+        else console.log('tab:', this.tab)
+      }
     },
     methods: {
       getGames(){
-        axios.get(`http://localhost:1919/${this.tab}/${this.page}`)
+        var getLink = `http://localhost:1919/${this.tab}/${this.page}`
+        if(this.genre != ''){ 
+          getLink += `?hasGenre=${this.genre}`;
+          if(this.developer != '') { getLink += `&developed=${this.developer}`; }
+          if(this.platform != '') { getLink += `&existsFor=${this.platform}`; }
+        }
+        else if(this.developer != '') {
+          getLink += `?developed=${this.developer}`;
+          if(this.platform != '') { getLink += `&existsFor=${this.platform}`; }
+        }
+        else if(this.platform != '') { 
+          getLink += `?existsFor=${this.platform}`; 
+        }
+        axios.get(getLink)
           .then(data => {
             const array1 = this.items;
-            this.items = [...array1, ...data.data];
+            if(this.genre != '' || this.developer != '' || this.platform !=''){
+              if(this.page == 0){
+                this.items = data.data.games;
+                this.page += data.data.offset;
+              }
+              else { 
+                this.items = [...array1, ...data.data.games]; 
+                this.page += data.data.offset;
+              }
+            }
+            else {
+              this.items = [...array1, ...data.data.games];
+              this.page += data.data.offset;
+            }
             this.$emit('scroll', false)
           })
           .catch(error => console.log(error));

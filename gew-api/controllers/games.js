@@ -90,73 +90,64 @@ Games.getTBA = async function(){
     } 
 }
 
-Games.getPage = async function(page, tab){
-    s = slugs()[tab]
+Games.getPage = async function(page, tab, filter){
+    s = slugs()[tab];
     var games = []
-    var slug = ''
-    for (i = (5 * page); i < (5 * (page + 1)); i++){
-        slug = s[i].split('#')[1]
-        var query = `
-        select ?g ?name ?rating ?background_image ?released where { 
-            gew:${slug} rdf:type gew:Games ;
-            gew:name ?name ;
-            gew:rating ?rating ;
-            gew:background_image ?background_image ;
-            gew:released ?released .
-        }`
-
-        var encoded = encodeURIComponent(prefixes + query)
-        try{
-            var response = await axios.get(getLink + encoded)
-            var arr = myNormalize(response.data)
-            if (arr[0] != null){
-                games.push(arr[0])
-            }
-        }
-        catch(e){
-            console.log('error: ' + slug)
-        } 
-    }
-    return games
-}
-
-Games.getFilterPage = async function(page, tab, filter, fValue){
-    s = slugs()[tab]
-    var games = []
+    let res = {};
     var slug = ''
     while(games.length < 5){
         for (i = (5 * page); i < (5 * (page + 1)); i++){
-            slug = s[i].split('#')[1]
-            var query = `
-            select ?g ?name ?rating ?background_image ?released where { 
-                gew:${slug} rdf:type gew:Games ;
-                gew:name ?name ;
-                gew:rating ?rating ;
-                gew:background_image ?background_image ;
-                gew:released ?released .
-                gew:${fValue} gew:${filter} gew:${slug}.
-            }`
+            if(s[i]){
+                slug = s[i].split('#')[1]
+                var query = `
+                select ?name ?rating ?background_image ?released where { 
+                    gew:${slug} rdf:type gew:Games ;
+                    gew:name ?name ;
+                    gew:rating ?rating ;
+                    gew:background_image ?background_image ;
+                    gew:released ?released .`
 
-            var encoded = encodeURIComponent(prefixes + query)
-
-            try{
-                var response = await axios.get(getLink + encoded);
-                var arr = myNormalize(response.data);
-                if (arr[0] != null){
-                    games.push(arr[0]);
+                if(filter.hasGenre){
+                    query += `
+                    gew:${slug} gew:hasGenre gew:${filter.hasGenre}.`
                 }
-            }
-            catch(e){
-                console.log('error: ' + slug)
-            } 
+                if(filter.developed){
+                    query += `
+                    gew:${filter.developed} gew:developed gew:${slug}.`
+                }
+                if(filter.existsFor){
+                    query += `
+                    gew:${slug} gew:existsFor gew:${filter.existsFor}.`
+                }
+
+                query += '}'
+
+                var encoded = encodeURIComponent(prefixes + query)
+                try{
+                    console.log(prefixes + query)
+                    var response = await axios.get(getLink + encoded)
+                    var arr = myNormalize(response.data)
+                    if (arr[0] != null){
+                        games.push(arr[0])
+                    }
+                }
+                catch(e){
+                    console.log(`error: ${slug} ---> ${e}`)
+                } 
+            }else {
+                page++;
+                res = {
+                    offset: page,
+                    games: games
+                }
+                return res}
         }
         page++;
     }
-    var res = {
+    res = {
         offset: page,
         games: games
     }
-    console.log(res)
     return res
 }
 

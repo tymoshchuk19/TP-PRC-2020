@@ -1,7 +1,6 @@
 var Users = module.exports
 const axios = require('axios')
 var host = require('../config/databases').host
-var qs = require('querystring')
 
 
 

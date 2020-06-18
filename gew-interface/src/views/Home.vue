@@ -26,27 +26,46 @@
         :key="i"
         :value="'tab-' + i"
       >
-        <v-overflow-btn
-          class="my-2"
-          :items="genres"
-          label="Genre"
-          editable
-          item-value="text"
-        ></v-overflow-btn>
+        <v-row>
+          <v-col>
+            <v-overflow-btn
+              class="my-2"
+              :items="genres"
+              label="Genre"
+              editable
+              item-value="text"
+              v-model="genre"
+            ></v-overflow-btn>
+          </v-col>
 
-        <v-overflow-btn
-          class="my-2"
-          :items="developers"
-          label="Developer"
-          editable
-          item-value="text"
-        ></v-overflow-btn>
+          <v-col>
+            <v-overflow-btn
+              class="my-2"
+              :items="developers"
+              label="Developer"
+              editable
+              item-value="text"
+              v-model="developer"
+            ></v-overflow-btn>
+          </v-col>
+
+          <v-col>
+            <v-overflow-btn
+              class="my-2"
+              :items="platforms"
+              label="Platform"
+              editable
+              item-value="text"
+              v-model="platform"
+            ></v-overflow-btn>
+          </v-col>
+        </v-row>
 
         <v-card
           flat
           tile
         >
-          <TimeLine :ntab="i" :act="activetab" :ss="scrolledToBottom" @scroll="scrolledToBottom = false"/>
+          <TimeLine :genre="genre" :developer="developer" :platform="platform" :ntab="i" :act="activetab" :ss="scrolledToBottom" @scroll="scrolledToBottom = false"/>
         </v-card>
       </v-tab-item>
     </v-tabs>
@@ -88,12 +107,21 @@ export default {
             this.developers = data.data;
           })
           .catch(error => console.log(error));
+      },
+
+      getPlatforms () {
+        axios.get(`http://localhost:1919/platforms`)
+          .then(data => {
+            this.platforms = data.data;
+          })
+          .catch(error => console.log(error));
       }
   },
   mounted() {
       this.scroll();
       this.getGenres();
-      this.getDevelopers()
+      this.getDevelopers();
+      this.getPlatforms()
   },
   data () {
       return {
@@ -107,7 +135,11 @@ export default {
         activetab: 0,
         scrolledToBottom: false,
         genres: [],
-        developers: []
+        developers: [],
+        platforms: [],
+        genre: '',
+        developer: '',
+        platform: ''
       }
     }
 }
