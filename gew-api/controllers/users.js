@@ -15,6 +15,7 @@ var prefixes = `
 `
 
 var getLink = host + "?query=" 
+var updateLink = host + "/statements?update="
 
 
 Users.getUser = async function(name){
@@ -38,12 +39,10 @@ Users.getUser = async function(name){
 }
 
 Users.newUser = async function(newUser){
-    var updateLink = host + "/statements?update=" 
-
     var query = `
     INSERT DATA
     { 
-        graph <http://www.semanticweb.org/prc/2020/gamingWiki#> 
+        graph <http://www.semanticweb.org/prc/2020/gamingWikiUsers> 
         { 
             gew:${newUser.username} rdf:type gew:Users ;
             rdf:type owl:NamedIndividual ;
@@ -57,11 +56,90 @@ Users.newUser = async function(newUser){
     var encoded = encodeURIComponent(prefixes + query)
 
     try{
-        console.log(getLink + encoded)
-        var response = await axios.get(updateLink + encoded)            
+        var response = await axios.post(updateLink + encoded)            
 
-        console.log(`Registo do utilizador.`)
         return newUser
+    }
+    catch(e){
+        throw(e)
+    } 
+}
+
+Users.getFavorites = async function(username){
+    query = `
+    SELECT ?fav ?name ?img where { 
+        gew:${username} gew:hasFavorite ?fav .
+        ?fav gew:name ?name.
+        ?fav gew:background_image ?img.
+    }
+    `
+    console.log(query)
+    var encoded = encodeURIComponent(prefixes + query)
+
+    try{
+        var response = await axios.get(getLink + encoded)
+        return response.data
+    }
+    catch(e){
+        throw(e)
+    } 
+}
+
+Users.getWishes = async function(username){
+    query = `
+    SELECT ?wish ?name ?img where { 
+        gew:${username} gew:wishes ?wish .
+        ?wish gew:name ?name.
+        ?wish gew:background_image ?img.
+    }`
+    console.log(query)
+    var encoded = encodeURIComponent(prefixes + query)
+
+    try{
+        var response = await axios.post(getLink + encoded)
+        return response.data
+    }
+    catch(e){
+        throw(e)
+    }
+}
+
+Users.newFavorite = async function(username, slug){
+    query = `
+    INSERT DATA
+    { 
+        graph <http://www.semanticweb.org/prc/2020/gamingWikiUsers> 
+        { 
+            gew:${username} gew:hasFavorite gew:${slug}.
+        }
+    }`
+    console.log(query)
+    var encoded = encodeURIComponent(prefixes + query)
+
+    try{
+        var response = await axios.post(updateLink + encoded)
+        return response.data
+    }
+    catch(e){
+        throw(e)
+    } 
+}
+
+Users.newWish = async function(username, slug){
+    query = `
+    INSERT DATA
+    { 
+        graph <http://www.semanticweb.org/prc/2020/gamingWikiUsers> 
+        { 
+            gew:${username} gew:wishes gew:${slug}.
+        }
+    }`
+
+    var encoded = encodeURIComponent(prefixes + query)
+
+    try{
+        var response = await axios.post(updateLink + encoded)
+        return response.data
     }
     catch(e){
         throw(e)

@@ -3,20 +3,13 @@ var router = express.Router();
 var Games = require('../controllers/games');
 var qs = require('querystring')
 
-
-/* GET home page. */
-// router.get('/', function(req, res, next) {
-//   Games.getLaunched()
-//     .then(dados => res.jsonp(dados))
-//     .catch(e => res.status(500).send(`Erro na listagem dos jogos: ${e}`))
-// });
-
-router.get('/:name', async function(req, res, next) {
-  Games.getGames(decodeURIComponent(req.params.name))
+/*GET game by slug */
+router.get('/:slug', async function(req, res, next) {
+  Games.getGame(decodeURIComponent(req.params.slug))
     .then(dados => {
       res.jsonp(dados)
     })
-    .catch(e => res.status(500).send(`Erro na listagem da página ${req.params.page}: ${e}`))
+    .catch(e => res.status(500).send(`Erro na obtenção do jogo "${req.params.slug}": ${e}`))
 })
 
 /* GET filtered page. */

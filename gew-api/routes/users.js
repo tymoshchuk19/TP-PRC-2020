@@ -41,4 +41,28 @@ router.get('/authenticated', verifyToken, (req, res) => {
     });
 });
 
+router.get('/favorites/:user', verifyToken, (req, res) => {
+    Users.getFavorites(req.params.user)
+      .then(data => res.json(data))
+      .catch(e => res.status(500).send(`Erro na obtenção da lista de favoritos do utilizador "${req.params.user}": ${e}`))
+})
+
+router.get('/wishes/:user', verifyToken, (req, res) => {
+    Users.getWishes(req.params.user)
+      .then(data => res.json(data))
+      .catch(e => res.status(500).send(`Erro na obtenção da lista de desejos do utilizador "${req.params.user}": ${e}`))
+})
+
+router.post('/favorites/:user/:game', (req, res) => {
+    Users.newFavorite(req.params.user, req.params.game)
+      .then(data => res.json(data))
+      .catch(e => res.status(500).send(`Erro na adição à lista de favoritos do utilizador "${req.params.user}": ${e}`))
+})
+
+router.post('/wishes/:user/:game', (req, res) => {
+    Users.newWish(req.params.user, req.params.game)
+      .then(data => res.json(data))
+      .catch(e => res.status(500).send(`Erro na adição à lista de desejos do utilizador "${req.params.user}": ${e}`))
+})
+
 module.exports = router;

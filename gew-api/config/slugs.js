@@ -10,7 +10,7 @@ const loadLaunched = async () => {
             })
             console.log('[Launched] loaded')
         })
-        .catch(e => console.log(`Erro na listagem dos jogos: ${e}`))
+        .catch(e => console.log(`Erro na listagem dos jogos lançados: ${e}`))
 }
 
 const loadUpcoming = async () => {
@@ -22,7 +22,7 @@ const loadUpcoming = async () => {
             })
             console.log('[Upcoming] loaded')
         })
-        .catch(e => console.log(`Erro na listagem dos jogos: ${e}`))
+        .catch(e => console.log(`Erro na listagem dos jogos por lançar: ${e}`))
 }
 
 const loadTBA = async () => {
@@ -34,7 +34,7 @@ const loadTBA = async () => {
             })
             console.log('[TBA] loaded')
         })
-        .catch(e => console.log(`Erro na listagem dos jogos: ${e}`))
+        .catch(e => console.log(`Erro na listagem dos jogos por anunciar: ${e}`))
 }
 
 exports.loadLaunched = loadLaunched
