@@ -26,6 +26,7 @@
             v-for="(item, i) in items" :key="i"
             class="white--text pt-3 pb-3" 
             color="primary"
+            @click="item.action"
           >
             <v-icon class="white--text mr-5">
               {{ item.icon }}
@@ -49,13 +50,25 @@ export default {
     return {
       items: [{
           name: 'Favorites',
-          icon: 'mdi-star'
+          icon: 'mdi-star',
+          action: () => {}
         }, {
           name: 'Settings',
-          icon: 'mdi-tune'
+          icon: 'mdi-tune',
+          action: () => {}
+        }, {
+          name: 'Account',
+          icon: 'mdi-account',
+          action: () => {}
         }, {
           name: 'Logout',
-          icon: 'mdi-logout'
+          icon: 'mdi-logout',
+          action: () => {
+            this.$store.commit('setToken', '');
+            this.$store.commit('setUsername', '');
+            console.log(this.$store.state.token)
+            this.$router.push('/login');
+          }
         }],
     };
   },
