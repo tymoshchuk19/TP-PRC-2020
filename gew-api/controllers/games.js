@@ -149,13 +149,13 @@ Games.getPage = async function(page, tab, filter){
 }
 
 Games.getGame = async function(slug){
-    var game = {}
     var query = `
     select ?name ?rating ?background_image ?released where { 
         gew:${slug} rdf:type gew:Games ;
         gew:name ?name ;
         gew:rating ?rating ;
         gew:background_image ?background_image ;
+        gew:description ?description ;
         gew:released ?released .
     }`
 
@@ -179,7 +179,10 @@ Games.getAchievements = async function(slug){
     var query = `
     select ?name ?description ?background_image where { 
         ?a rdf:type gew:Achievements ;
-        gew:isAchievementOf gew:${slug} .
+        gew:isAchievementOf gew:${slug} ;
+        gew:name ?name ;
+        gew:description ?description ;
+        gew:background_image ?background_image .
     }`
 
     var encoded = encodeURIComponent(prefixes + query)
