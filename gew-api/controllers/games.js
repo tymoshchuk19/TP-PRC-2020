@@ -150,7 +150,7 @@ Games.getPage = async function(page, tab, filter){
 
 Games.getGame = async function(slug){
     var query = `
-    select ?name ?rating ?background_image ?released where { 
+    select ?name ?rating ?background_image ?released ?description where { 
         gew:${slug} rdf:type gew:Games ;
         gew:name ?name ;
         gew:rating ?rating ;
@@ -165,7 +165,8 @@ Games.getGame = async function(slug){
         var response = await axios.get(getLink + encoded)
         var arr = myNormalize(response.data)
         if (arr[0] != null){
-            let achievements = Games.getAchievements(slug)
+            let achievements = await Games.getAchievements(slug)
+            console.log(achievements)
             arr[0].achievements = achievements;
             return arr[0]
         }
@@ -229,7 +230,7 @@ Games.getAchievements = async function(slug){
         var response = await axios.get(getLink + encoded)
         var arr = myNormalize(response.data)
         if (arr[0] != null){
-            return arr[0]
+            return arr
         }
     }
     catch(e){

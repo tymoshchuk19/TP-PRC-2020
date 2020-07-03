@@ -60,7 +60,7 @@ Users.getFavorites = async function(username){
         var response = await axios.get(getLink + encoded)
         var arr = myNormalize(response.data)
         if (arr[0] != null){
-            return arr[0]
+            return arr
         }
     }
     catch(e){
@@ -82,7 +82,7 @@ Users.getWishes = async function(username){
         var response = await axios.get(getLink + encoded)
         var arr = myNormalize(response.data)
         if (arr[0] != null){
-            return arr[0]
+            return arr
         }
     }
     catch(e){
