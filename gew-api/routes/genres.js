@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var Genres = require('../controllers/genres');
+var verifyToken = require("../config/auth").verifyToken;
 
-router.get('/', async function(req, res, next) {
+router.get('/', verifyToken, async function(req, res, next) {
     Genres.getGenres()
       .then(dados => {
         let arr = []

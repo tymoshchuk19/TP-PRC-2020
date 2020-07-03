@@ -175,6 +175,44 @@ Games.getGame = async function(slug){
     }
 }
 
+Games.getSearchGames = async function(search) {
+    s = slugs()[0].concat(slugs()[1].concat(slugs()[2]))
+    var games = []
+    var slug = ''
+    var searchSlug = search.split(' ').join('-').toLowerCase()
+    var i = 0
+    while(games.length < 10){
+        if(s[i]){
+            slug = s[i].split('#')[1]
+            if(slug.includes(searchSlug)) {
+                var query = `
+                select ?name ?rating ?background_image ?released where { 
+                    gew:${slug} rdf:type gew:Games ;
+                    gew:name ?name ;
+                    gew:rating ?rating ;
+                    gew:background_image ?background_image ;
+                    gew:released ?released .}`
+                
+                console.log(query)
+                var encoded = encodeURIComponent(prefixes + query)
+
+                try{
+                    var response = await axios.get(getLink + encoded)
+                    var arr = myNormalize(response.data)
+                    if (arr[0] != null){
+                        games.push(arr[0])
+                    }
+                }
+                catch(e){
+                    console.log(`error: ${search} ---> ${e}`)
+                } 
+            }
+        }else break
+        i++
+    }
+    return games
+}
+
 Games.getAchievements = async function(slug){
     var query = `
     select ?name ?description ?background_image where { 
