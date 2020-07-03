@@ -1,7 +1,6 @@
 var jwt = require('jsonwebtoken');
 
 async function authLogin(user){
-    console.log('0--->', user)
     return await jwt.sign({ user: user }, 'secretkey', { expiresIn: '3000s' }); 
 }
 
@@ -12,17 +11,10 @@ function verifyToken(req, res, next) {
         // Set the token
         req.token = req.headers['authorization']
         jwt.verify(req.token, 'secretkey', (err, authData) => {
-            if(err) {
-                res.sendStatus(403);
-            } else {
-                // Next middleware
-                next();
-            }
+            if(err) res.sendStatus(403)
+            else next();
         });
-    } else {
-        // Forbidden
-        res.sendStatus(403);
-    }
+    } else res.sendStatus(403);
 }
 
 exports.authLogin = authLogin;

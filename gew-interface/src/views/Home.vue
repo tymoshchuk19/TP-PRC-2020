@@ -65,7 +65,13 @@
           flat
           tile
         >
-          <TimeLine :genre="genre" :developer="developer" :platform="platform" :ntab="i" :act="activetab" :ss="scrolledToBottom" @scroll="scrolledToBottom = false"/>
+          <TimeLine 
+            :genre="genre" 
+            :developer="developer" 
+            :platform="platform" 
+            :ntab="i" :act="activetab" 
+            :ss="scrolledToBottom" 
+            @scroll="scrolledToBottom = false"/>
         </v-card>
       </v-tab-item>
     </v-tabs>
@@ -94,7 +100,11 @@ export default {
       },
 
       getGenres () {
-        axios.get(`http://localhost:1919/genres`)
+        axios.get(`http://localhost:1919/genres`,{
+          headers: {
+            Authorization: this.$store.state.token 
+          }
+        })
           .then(data => {
             this.genres = data.data;
           })
@@ -102,7 +112,11 @@ export default {
       },
 
       getDevelopers () {
-        axios.get(`http://localhost:1919/developers`)
+        axios.get(`http://localhost:1919/developers`,{
+          headers: {
+            Authorization: this.$store.state.token 
+          }
+        })
           .then(data => {
             this.developers = data.data;
           })
@@ -110,7 +124,11 @@ export default {
       },
 
       getPlatforms () {
-        axios.get(`http://localhost:1919/platforms`)
+        axios.get(`http://localhost:1919/platforms`,{
+          headers: {
+            Authorization: this.$store.state.token 
+          }
+        })
           .then(data => {
             this.platforms = data.data;
           })

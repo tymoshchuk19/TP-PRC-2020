@@ -17,8 +17,8 @@ router.post('/authenticate', (req, res) => {
         .then(async user => {
             if(user && user.password === req.body.password) {
                 token = await authLogin(req.body)
-                console.log('2--->',token)
                 res.json({
+                    user,
                     token
                 });
             } else {
@@ -28,18 +28,17 @@ router.post('/authenticate', (req, res) => {
         .catch(err => res.jsonp(err));
 });
 
-router.get('/authenticated', verifyToken, (req, res) => {  
-    jwt.verify(req.token, 'secretkey', (err, authData) => {
-        if(err) {
-            res.sendStatus(403);
-        } else {
-            res.json({
-                message: 'Utilizador autenticado!',
-                authData
-            });
-        }
-    });
-});
+router.get('/favorites/:user', verifyToken, (req, res) => {
+    Users.getFavorites(req.params.user)
+      .then(data => res.json(data))
+      .catch(e => res.status(500).send(`Erro na obtenção da lista de favoritos do utilizador "${req.params.user}": ${e}`))
+})
+
+router.get('/wishes/:user', verifyToken, (req, res) => {
+    Users.getWishes(req.params.user)
+      .then(data => res.json(data))
+      .catch(e => res.status(500).send(`Erro na obtenção da lista de desejos do utilizador "${req.params.user}": ${e}`))
+})
 
 router.post('/favorites/:user/:game', verifyToken, (req, res) => {
     Users.newFavorite(req.params.user, req.params.game)

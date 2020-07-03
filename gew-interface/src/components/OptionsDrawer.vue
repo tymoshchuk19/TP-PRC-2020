@@ -8,13 +8,23 @@
     temporary
     height="100%"
   >
-      <v-card class="pb-8 pt-8" color="primary">
-          <v-icon class="white--text mr-5 ml-5">
+      <v-card class="pb-5 pt-5" color="primary">
+        <div class="ml-10">
+          <v-icon v-if="!$store.state.user.image" class="white--text mr-5 ml-5">
             mdi-account
           </v-icon>
-          <span class="white--text">
-            {{ $store.state.username }}
+
+          <v-avatar
+            v-else 
+          >
+            <v-img 
+              :src="$store.state.user.image" 
+            ></v-img>
+          </v-avatar>
+          <span class="white--text ma-1">
+            {{ $store.state.user.name }}
           </span>
+        </div>
       </v-card>
       <v-divider></v-divider>
       <v-row height="100%" align="end">
@@ -49,23 +59,19 @@ export default {
   data() {
     return {
       items: [{
-          name: 'Favorites',
-          icon: 'mdi-star',
-          action: () => {}
-        }, {
           name: 'Settings',
           icon: 'mdi-tune',
           action: () => {}
         }, {
           name: 'Account',
           icon: 'mdi-account',
-          action: () => {}
+          action: () => {this.$router.push('/account');}
         }, {
           name: 'Logout',
           icon: 'mdi-logout',
           action: () => {
-            this.$store.commit('setToken', '');
-            this.$store.commit('setUsername', '');
+            this.$store.commit('setToken', null);
+            this.$store.commit('setUser', null);
             console.log(this.$store.state.token)
             this.$router.push('/login');
           }
