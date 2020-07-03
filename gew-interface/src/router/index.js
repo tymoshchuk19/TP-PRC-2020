@@ -19,12 +19,6 @@ Vue.use(VueRouter)
     meta: { requiresAuth: true }
   },
   {
-    path: '/favorites',
-    name: 'Favorites',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Favorites.vue'),
-    meta: { requiresAuth: true }
-  },
-  {
     path: '/login',
     name: 'Login',
     component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')

@@ -11,21 +11,10 @@ function verifyToken(req, res, next) {
         // Set the token
         req.token = req.headers['authorization']
         jwt.verify(req.token, 'secretkey', (err, authData) => {
-            if(err) {
-                res.sendStatus(403);
-            } else {
-                res.json({
-                    message: 'Utilizador autenticado!',
-                    authData
-                });
-                // Next middleware
-                next();
-            }
+            if(err) res.sendStatus(403)
+            else next();
         });
-    } else {
-        // Forbidden
-        res.sendStatus(403);
-    }
+    } else res.sendStatus(403);
 }
 
 exports.authLogin = authLogin;

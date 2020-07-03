@@ -59,14 +59,6 @@ export default {
   data() {
     return {
       items: [{
-          name: 'Favorites',
-          icon: 'mdi-star',
-          action: () => {this.$router.push('/favorites');}
-        }, {
-          name: 'Wishes',
-          icon: 'mdi-stairs',
-          action: () => {}
-        }, {
           name: 'Settings',
           icon: 'mdi-tune',
           action: () => {}

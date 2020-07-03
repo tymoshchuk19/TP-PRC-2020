@@ -38,14 +38,23 @@
 <script>
 import axios from 'axios'
   export default {
+    props: ['label'],
     methods: {
-    getGenres () {
-        axios.get(`http://localhost:1919/users/favorites/${this.$store.state.user.name}`)
+    getList () {
+        axios.get(`http://localhost:1919/users/${this.label}/${this.$store.state.user.name}`,{
+          headers: {
+            Authorization: this.$store.state.token 
+          }
+        })
           .then(data => {
+            console.log(data.data)
             this.items = data.data;
           })
           .catch(error => console.log(error));
       }
+    },
+    mounted() {
+      this.getList()
     },
     data: () => ({
       items: [],

@@ -40,6 +40,14 @@
           :value="$store.state.user.email"
           disabled
         ></v-textarea>
+        <v-row>
+          <v-col cols=6>
+            <List label="favorites"/>
+          </v-col>
+          <v-col cols=6>
+            <List label="wishes"/>
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
   </div>
@@ -48,10 +56,12 @@
 <script>
 // @ is an alias to /src
 import axios from 'axios'
+import List from "@/components/List.vue";
 
 export default {
   name: 'Account',
   components: {
+    List
   },
   methods: {
     addFile(){

@@ -59,7 +59,7 @@
       <v-spacer></v-spacer>
 
       <div
-        v-if="$store.state.user"
+        v-if="$store.state.user != null"
         text
         @click="drawAccount = !drawAccount"
       >
@@ -92,9 +92,12 @@
       color="primary"
       @click="toTop"
     >
-      <v-icon>mdi-arrow-up</v-icon>
+      <v-icon> mdi-arrow-up</v-icon>
     </v-btn>
-    <Account :drawer="drawAccount"/>
+    <Account 
+      v-if="$store.state.user != null" 
+      :drawer="drawAccount"
+    />
   </v-app>
 </template>
 
@@ -124,10 +127,10 @@ export default {
     },
     //Obter jogos para a procura
     getGames(){
-      console.log('carreguei jogos')
-      axios.get(`http://localhost:1919/${this.game}`)
+      axios.get(`http://localhost:1919/search/${this.game}`)
         .then(data => {
           this.items = data.data;
+          console.log('carreguei jogos')
         })
         .catch(error => console.log(error));
     }

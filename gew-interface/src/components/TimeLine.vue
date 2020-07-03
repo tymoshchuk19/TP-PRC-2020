@@ -95,7 +95,11 @@ import axios from 'axios'
         else if(this.platform != '') { 
           getLink += `?existsFor=${this.platform}`; 
         }
-        axios.get(getLink)
+        axios.get(getLink, {
+          headers: {
+            Authorization: this.$store.state.token 
+          }
+        })
           .then(data => {
             const array1 = this.items;
             if(this.genre != '' || this.developer != '' || this.platform !=''){
