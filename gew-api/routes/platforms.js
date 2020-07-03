@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var Platforms = require('../controllers/platforms');
+var verifyToken = require("../config/auth").verifyToken;
 
-router.get('/', async function(req, res, next) {
+router.get('/', verifyToken, async function(req, res, next) {
     Platforms.getPlatforms()
       .then(dados => {
         let arr = []

@@ -113,7 +113,7 @@ export default {
     },
     getGames(){
       console.log('carreguei jogos')
-      axios.get(`http://localhost:1919/${this.game}`)
+      axios.get(`http://localhost:1919/search/${this.game}`)
         .then(data => {
           this.items = data.data;
         })

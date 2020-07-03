@@ -15,10 +15,6 @@ function verifyToken(req, res, next) {
             if(err) {
                 res.sendStatus(403);
             } else {
-                res.json({
-                    message: 'Utilizador autenticado!',
-                    authData
-                });
                 // Next middleware
                 next();
             }
