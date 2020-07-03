@@ -18,10 +18,10 @@ var getLink = host + "?query="
 var updateLink = host + "/statements?update="
 
 
-Users.getUser = async function(name){
+Users.getUser = async function(username){
     var query = `
     select ?name ?password ?email where {
-        gew:${name} rdf:type gew:Users ;
+        gew:${username} rdf:type gew:Users ;
         gew:name ?name ;
         gew:password ?password ;
         gew:email ?email .
@@ -31,11 +31,63 @@ Users.getUser = async function(name){
 
     try{
         var response = await axios.get(getLink + encoded)
-        return myNormalize(response.data)[0]
+        var arr = myNormalize(response.data)
+        if (arr[0] != null){
+            let favorites = await Users.getFavorites(username)
+            arr[0].favorites = favorites;
+
+            let wishes = await Users.getWishes(username)
+            arr[0].wishes = wishes;
+            return arr[0]
+        }
     }
     catch(e){
         throw(e)
     } 
+}
+
+Users.getFavorites = async function(username){
+    var query =  `
+    SELECT ?fav ?name ?img where { 
+        gew:${username} gew:hasFavorite ?fav .
+        ?fav gew:name ?name.
+        ?fav gew:background_image ?img.
+    }
+    `
+    var encoded = encodeURIComponent(prefixes + query)
+
+    try {
+        var response = await axios.get(getLink + encoded)
+        var arr = myNormalize(response.data)
+        if (arr[0] != null){
+            return arr[0]
+        }
+    }
+    catch(e){
+        console.log('erro na obtenção da lista de favoritos de ' + username)
+    }
+}
+
+Users.getWishes = async function(username){
+    var query = `
+    SELECT ?wish ?name ?img where { 
+        gew:${username} gew:wishes ?wish .
+        ?wish gew:name ?name.
+        ?wish gew:background_image ?img.
+    }
+    `
+    var encoded = encodeURIComponent(prefixes + query)
+
+    try {
+        var response = await axios.get(getLink + encoded)
+        var arr = myNormalize(response.data)
+        if (arr[0] != null){
+            return arr[0]
+        }
+    }
+    catch(e){
+        console.log('erro na obtenção da lista de desejos de ' + username)
+    }
 }
 
 Users.newUser = async function(newUser){
@@ -63,45 +115,6 @@ Users.newUser = async function(newUser){
     catch(e){
         throw(e)
     } 
-}
-
-Users.getFavorites = async function(username){
-    query = `
-    SELECT ?fav ?name ?img where { 
-        gew:${username} gew:hasFavorite ?fav .
-        ?fav gew:name ?name.
-        ?fav gew:background_image ?img.
-    }
-    `
-    console.log(query)
-    var encoded = encodeURIComponent(prefixes + query)
-
-    try{
-        var response = await axios.get(getLink + encoded)
-        return response.data
-    }
-    catch(e){
-        throw(e)
-    } 
-}
-
-Users.getWishes = async function(username){
-    query = `
-    SELECT ?wish ?name ?img where { 
-        gew:${username} gew:wishes ?wish .
-        ?wish gew:name ?name.
-        ?wish gew:background_image ?img.
-    }`
-    console.log(query)
-    var encoded = encodeURIComponent(prefixes + query)
-
-    try{
-        var response = await axios.post(getLink + encoded)
-        return response.data
-    }
-    catch(e){
-        throw(e)
-    }
 }
 
 Users.newFavorite = async function(username, slug){

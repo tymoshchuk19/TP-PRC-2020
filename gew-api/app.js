@@ -8,6 +8,7 @@ var usersRouter = require('./routes/users');
 var genresRouter = require('./routes/genres');
 var developersRouter = require('./routes/developers');
 var platformsRouter = require('./routes/platforms');
+var filesRouter = require('./routes/files');
 
 var slugs = require('./config/slugs')
 
@@ -33,12 +34,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/platforms', platformsRouter);
 app.use('/developers', developersRouter);
+app.use('/platforms', platformsRouter);
+app.use('/uploads', express.static(`../public/uploads`)); 
 app.use('/genres', genresRouter);
 app.use('/users', usersRouter);
+app.use('/file', filesRouter);
 app.use('/', gamesRouter);
-
 
 
 // catch 404 and forward to error handler
