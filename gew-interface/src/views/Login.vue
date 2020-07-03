@@ -76,12 +76,13 @@ import qs from 'querystring'
         })
           .then(data => {
             if(data.data.token) {
+              data.data.user.image = 'https://scontent-mad1-1.xx.fbcdn.net/v/t1.0-1/p320x320/45793319_921720691359428_2742517402259423232_o.jpg?_nc_cat=106&_nc_sid=dbb9e7&_nc_ohc=miK80xzVrEQAX-2M8dO&_nc_ht=scontent-mad1-1.xx&_nc_tp=6&oh=de84aa5695cbf271360548addd1c2ef1&oe=5F23FEB5'
               this.$store.commit('setToken', data.data.token);
-              this.$store.commit('setUsername', this.username);
-              console.log(this.$store.state.token)
+              this.$store.commit('setUser', data.data.user);
+              
               this.$router.push('/');
             } else {
-              alert('Credenciais inválidas' )
+              alert('Credenciais inválidas')
             }
           })
           .catch((err) => console.log(err));

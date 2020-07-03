@@ -10,6 +10,7 @@
         <v-col cols=3>
           <v-btn
             text
+            @click="() => this.$router.push('/')"
           >
             <span class="headline font-weight-bold mr-2 white--text">GEW</span>
             <v-icon class="secondary blue--text">mdi-gamepad</v-icon>
@@ -57,14 +58,24 @@
       
       <v-spacer></v-spacer>
 
-      <v-btn
-        v-if="$store.state.username"
+      <div
+        v-if="$store.state.user"
         text
         @click="drawAccount = !drawAccount"
       >
-        <v-icon class="mr-3">mdi-account</v-icon>
-        <span class="mr-2"> {{$store.state.username}} </span>
-      </v-btn>
+        <v-icon v-if="!$store.state.user.image" class="white--text mr-5 ml-5">
+          mdi-account
+        </v-icon>
+
+        <v-avatar
+          v-else 
+        >
+          <v-img 
+            :src="$store.state.user.image" 
+          ></v-img>
+        </v-avatar>
+        <span class="ma-3"> {{$store.state.user.name}} </span>
+      </div>
     </v-app-bar>
 
     <v-content>
@@ -89,7 +100,7 @@
 
 <script>
 import axios from 'axios'
-import Account from "@/components/Account.vue";
+import Account from "@/components/OptionsDrawer.vue";
 
 export default {
   name: 'App',
@@ -111,6 +122,7 @@ export default {
     toTop () {
       this.$vuetify.goTo(0)
     },
+    //Obter jogos para a procura
     getGames(){
       console.log('carreguei jogos')
       axios.get(`http://localhost:1919/${this.game}`)

@@ -65,7 +65,13 @@
           flat
           tile
         >
-          <TimeLine :genre="genre" :developer="developer" :platform="platform" :ntab="i" :act="activetab" :ss="scrolledToBottom" @scroll="scrolledToBottom = false"/>
+          <TimeLine 
+            :genre="genre" 
+            :developer="developer" 
+            :platform="platform" 
+            :ntab="i" :act="activetab" 
+            :ss="scrolledToBottom" 
+            @scroll="scrolledToBottom = false"/>
         </v-card>
       </v-tab-item>
     </v-tabs>

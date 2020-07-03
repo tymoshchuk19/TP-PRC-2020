@@ -9,8 +9,6 @@ var genresRouter = require('./routes/genres');
 var developersRouter = require('./routes/developers');
 var platformsRouter = require('./routes/platforms');
 
-
-
 var slugs = require('./config/slugs')
 
 var app = express();

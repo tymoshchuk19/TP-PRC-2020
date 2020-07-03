@@ -1,7 +1,6 @@
 var jwt = require('jsonwebtoken');
 
 async function authLogin(user){
-    console.log('0--->', user)
     return await jwt.sign({ user: user }, 'secretkey', { expiresIn: '3000s' }); 
 }
 
