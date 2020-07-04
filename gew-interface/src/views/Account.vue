@@ -42,10 +42,10 @@
         ></v-textarea>
         <v-row>
           <v-col cols=6>
-            <List label="favorites"/>
+            <List label="Favorites"/>
           </v-col>
           <v-col cols=6>
-            <List label="wishes"/>
+            <List label="Wishes"/>
           </v-col>
         </v-row>
       </v-col>
