@@ -51,6 +51,7 @@ Users.getFavorites = async function(username){
     SELECT ?fav ?name ?img where { 
         gew:${username} gew:hasFavorite ?fav .
         ?fav gew:name ?name.
+        ?fav gew:rating ?rating .
         ?fav gew:background_image ?img.
     }
     `
@@ -73,6 +74,7 @@ Users.getWishes = async function(username){
     SELECT ?wish ?name ?img where { 
         gew:${username} gew:wishes ?wish .
         ?wish gew:name ?name.
+        ?fav gew:rating ?rating .
         ?wish gew:background_image ?img.
     }
     `
