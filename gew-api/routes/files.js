@@ -5,7 +5,7 @@ var verifyToken = require("../config/auth").verifyToken;
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-      cb(null, `../public/uploads`);
+      cb(null, `../public/images`);
     },
     filename: function(req, file, cb) {
       cb(null, new Date().toISOString() + file.originalname);
@@ -13,10 +13,7 @@ const storage = multer.diskStorage({
   });
 
 const upload = multer({
-  storage: storage,
-  limits: {
-      fileSize: 1024 * 1024 * 5
-  }
+  storage: storage
 });
 
 router.post('/', upload.single('newfile'), (req, res) => {
