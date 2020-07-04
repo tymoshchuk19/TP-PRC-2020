@@ -1,7 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var gamesRouter = require('./routes/games');
 var usersRouter = require('./routes/users');
@@ -9,26 +8,6 @@ var genresRouter = require('./routes/genres');
 var developersRouter = require('./routes/developers');
 var platformsRouter = require('./routes/platforms');
 var filesRouter = require('./routes/files');
-
-var router = express.Router();
-var multer = require('multer');
-var verifyToken = require("./config/auth").verifyToken;
-
-const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-      cb(null, `./public/images`);uploads
-    },
-    filename: function(req, file, cb) {
-      cb(null, new Date().toISOString() + file.originalname);
-    }
-  });
-
-const upload = multer({
-  storage: storage,
-  limits: {
-      fileSize: 1024 * 1024 * 5
-  }
-});
 
 var slugs = require('./config/slugs')
 
@@ -51,20 +30,13 @@ app.use(cors(corsOpts))
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-router.post('/upload', upload.single('newfile'), (req, res) => {
-  console.log(req.body)
-  res.json("New file added");
-});
 
 app.use('/developers', developersRouter);
 app.use('/platforms', platformsRouter);
-app.use('/uploads', express.static(`../public/uploads`)); 
 app.use('/genres', genresRouter);
 app.use('/users', usersRouter);
-app.use('/file', filesRouter);
+app.use('/files', filesRouter);
 app.use('/', gamesRouter);
 
 
