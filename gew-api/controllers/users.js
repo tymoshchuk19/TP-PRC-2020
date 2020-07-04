@@ -48,7 +48,7 @@ Users.getUser = async function(username){
 
 Users.getFavorites = async function(username){
     var query =  `
-    SELECT ?fav ?name ?background_image where { 
+    SELECT ?fav ?name ?rating ?background_image where { 
         gew:${username} gew:hasFavorite ?fav .
         ?fav gew:name ?name.
         ?fav gew:rating ?rating .
@@ -71,7 +71,7 @@ Users.getFavorites = async function(username){
 
 Users.getWishes = async function(username){
     var query = `
-    SELECT ?wish ?name ?background_image where { 
+    SELECT ?wish ?name ?rating ?background_image where { 
         gew:${username} gew:wishes ?wish .
         ?wish gew:name ?name.
         ?wish gew:rating ?rating .

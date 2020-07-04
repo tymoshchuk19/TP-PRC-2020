@@ -2,14 +2,15 @@
   <v-card
     max-width="450"
     class="ma-3"
+    color="primary"
   >
-    <div class="headline font-weight-bold blue--text ma-2">
+    <div class="headline font-weight-bold white--text ma-2">
       {{label}}
     </div>
     <v-card class="ma-1" v-for="item in items" :key="item.name">
       <v-row>
         <v-col cols=4>
-          <v-img class="ma-1" :src="item.background_image"></v-img>
+          <v-img class="ma-1" :src="item.background_image" :aspect-ratio="1/1"></v-img>
         </v-col>
         <v-col cols=8>
           <v-textarea
@@ -41,7 +42,7 @@
       console.log("user:", this.$store.state.user)
       }
     },
-    mounted() {
+    created() {
       this.getItems()
     },
     data: () => ({
