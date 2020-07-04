@@ -1,5 +1,29 @@
 <template>
-  <div class="Account">
+  <div class="GAme">
+    <v-carousel
+      cycle
+      height="400"
+      hide-delimiter-background
+      show-arrows-on-hover
+    > 
+      <v-carousel-item
+        v-for="(slide, i) in slides"
+        :key="i"
+      >
+        <v-sheet
+          :color="colors[i]"
+          height="100%"
+        >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+            <div class="display-3">{{ slide }} Slide</div>
+          </v-row>
+        </v-sheet>
+      </v-carousel-item>
+    </v-carousel>
     <v-row>
       <v-col cols=4 >
         <v-img
@@ -67,7 +91,7 @@ export default {
     addFile(){
       let data = new FormData();
       data.append('newfile', this.file, this.file.fileName);
-      axios.post('http://localhost:1919/file', data, {
+      axios.post(`http://localhost:1919/${this.slug}`, data, {
         headers: {
           'Content-Type': `multipart/form-data;`,
           Authorization: this.$store.state.token
