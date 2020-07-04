@@ -166,8 +166,11 @@ Games.getGame = async function(slug){
         var arr = myNormalize(response.data)
         if (arr[0] != null){
             let achievements = await Games.getAchievements(slug)
-            console.log(achievements)
             arr[0].achievements = achievements;
+
+            let screenshots = await Games.getScreenshots(slug)
+            arr[0].short_screenshots = screenshots;
+
             return arr[0]
         }
     }
@@ -235,6 +238,26 @@ Games.getAchievements = async function(slug){
     }
     catch(e){
         console.log('erro na obtenção dos achievements de ' + slug)
+    }
+}
+
+Games.getScreenshots = async function(slug){
+    var query = `
+    select ?screenshot where { 
+        gew:${slug} gew:short_screenshots ?screenshot.
+    }`
+
+    var encoded = encodeURIComponent(prefixes + query)
+
+    try {
+        var response = await axios.get(getLink + encoded)
+        var arr = myNormalize(response.data)
+        if (arr[0] != null){
+            return arr
+        }
+    }
+    catch(e){
+        console.log('erro na obtenção dos screenshots de ' + slug)
     }
 }
 
