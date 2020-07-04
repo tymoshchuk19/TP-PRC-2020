@@ -17,6 +17,7 @@ router.post('/authenticate', (req, res) => {
         .then(async user => {
             if(user && user.password === req.body.password) {
                 token = await authLogin(req.body)
+                console.log(user)
                 res.json({
                     user,
                     token

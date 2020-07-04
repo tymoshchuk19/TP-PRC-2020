@@ -48,11 +48,11 @@ Users.getUser = async function(username){
 
 Users.getFavorites = async function(username){
     var query =  `
-    SELECT ?fav ?name ?img where { 
+    SELECT ?fav ?name ?background_image where { 
         gew:${username} gew:hasFavorite ?fav .
         ?fav gew:name ?name.
         ?fav gew:rating ?rating .
-        ?fav gew:background_image ?img.
+        ?fav gew:background_image ?background_image.
     }
     `
     var encoded = encodeURIComponent(prefixes + query)
@@ -71,11 +71,11 @@ Users.getFavorites = async function(username){
 
 Users.getWishes = async function(username){
     var query = `
-    SELECT ?wish ?name ?img where { 
+    SELECT ?wish ?name ?background_image where { 
         gew:${username} gew:wishes ?wish .
         ?wish gew:name ?name.
-        ?fav gew:rating ?rating .
-        ?wish gew:background_image ?img.
+        ?wish gew:rating ?rating .
+        ?wish gew:background_image ?background_image.
     }
     `
     var encoded = encodeURIComponent(prefixes + query)

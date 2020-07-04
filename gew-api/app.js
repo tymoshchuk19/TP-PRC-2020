@@ -10,6 +10,26 @@ var developersRouter = require('./routes/developers');
 var platformsRouter = require('./routes/platforms');
 var filesRouter = require('./routes/files');
 
+var router = express.Router();
+var multer = require('multer');
+var verifyToken = require("./config/auth").verifyToken;
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+      cb(null, `./public/images`);uploads
+    },
+    filename: function(req, file, cb) {
+      cb(null, new Date().toISOString() + file.originalname);
+    }
+  });
+
+const upload = multer({
+  storage: storage,
+  limits: {
+      fileSize: 1024 * 1024 * 5
+  }
+});
+
 var slugs = require('./config/slugs')
 
 var app = express();
@@ -33,6 +53,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+router.post('/upload', upload.single('newfile'), (req, res) => {
+  console.log(req.body)
+  res.json("New file added");
+});
 
 app.use('/developers', developersRouter);
 app.use('/platforms', platformsRouter);
