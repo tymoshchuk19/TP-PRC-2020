@@ -22,6 +22,7 @@
             :items="items"
             v-model="game"
             :rules="rules"
+            item-text="name"
             outlined
             dense
             allow-overflow
