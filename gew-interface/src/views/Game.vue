@@ -51,8 +51,6 @@
       </v-col>
     </v-row>
 
-<<<<<<< HEAD
-=======
     <v-row>
       <v-col cols=6>
         <v-card>
@@ -68,7 +66,6 @@
       </v-col>
     </v-row>
 
->>>>>>> e2ea41b7bd8b29dff258dd096010ebdd92cdfe45
     <v-card
       class="ma-3"
       color="primary"
