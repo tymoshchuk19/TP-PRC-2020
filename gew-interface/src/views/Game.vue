@@ -51,6 +51,21 @@
       </v-col>
     </v-row>
 
+    <v-row>
+      <v-col cols=6>
+        <v-card>
+          <v-img class="ma-1" :src="item.background_image" :aspect-ratio="1/1"></v-img>
+        </v-card>
+      </v-col>
+      <v-col cols=6>
+        <v-card>
+          <div class="headline font-weight-bold blue--text">
+            {{item.name}}
+          </div>
+        </v-card>
+      </v-col>
+    </v-row>
+
     <v-card
       class="ma-3"
       color="primary"
