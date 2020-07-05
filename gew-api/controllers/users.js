@@ -1,5 +1,6 @@
 var Users = module.exports
 const axios = require('axios')
+const fs = require('fs')
 var host = require('../config/databases').host
 
 var prefixes = `
@@ -160,6 +161,12 @@ Users.setProfilePic = async function (username, file){
         DELETE DATA { 
             gew:${username} gew:profile '${user.profile }'
         };`
+        try{
+            fs.unlink(`./public/images/${user.profile}`)
+        } catch(err) {
+            console.error(err)
+        }
+        
     }
 
     query += `
