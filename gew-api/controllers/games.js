@@ -190,13 +190,14 @@ Games.getSearchGames = async function(search) {
 
 Games.getGame = async function(slug){
     var query = `
-    select ?name ?rating ?background_image ?released ?description where { 
+    select ?slug ?name ?rating ?background_image ?released ?description where { 
         gew:${slug} rdf:type gew:Games ;
         gew:name ?name ;
         gew:rating ?rating ;
         gew:background_image ?background_image ;
         gew:description ?description ;
         gew:released ?released .
+        bind(str('${slug}') as ?slug).
     }`
 
     var encoded = encodeURIComponent(prefixes + query)

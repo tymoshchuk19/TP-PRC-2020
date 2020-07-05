@@ -151,6 +151,42 @@ Users.newWish = async function(username, slug){
     } 
 }
 
+Users.deleteFavorite = async function (username, slug){
+    query = `
+    DELETE DATA
+    { 
+        gew:${username} gew:hasFavorite gew:${slug}.
+    }`
+
+    var encoded = encodeURIComponent(prefixes + query)
+
+    try{
+        var response = await axios.post(updateLink + encoded)
+        return response.data
+    }
+    catch(e){
+        throw(e)
+    } 
+}
+
+Users.deleteWish = async function (username, slug){
+    query = `
+    DELETE DATA
+    { 
+        gew:${username} gew:wishes gew:${slug}.
+    }`
+
+    var encoded = encodeURIComponent(prefixes + query)
+
+    try{
+        var response = await axios.post(updateLink + encoded)
+        return response.data
+    }
+    catch(e){
+        throw(e)
+    } 
+}
+
 Users.setProfilePic = async function (username, file){
     var user = await Users.getUser(username);
 
@@ -158,14 +194,12 @@ Users.setProfilePic = async function (username, file){
     if(user.profile){
         query += `
         DELETE DATA { 
-            gew:${username} gew:profile '${user.profile }'
+            gew:${username} gew:profile '${user.profile}'
         };`
-        // try{
-        //     fs.unlink(`./public/images/${user.profile}`)
-        // } catch(err) {
-        //     console.error(err)
-        // }
-        
+        fs.unlink(`./public/images/${user.profile}`, (err) => {
+            if (err) throw err;
+            console.log(`A imagem ${user.profile} foi apagada`);
+        })
     }
 
     query += `
