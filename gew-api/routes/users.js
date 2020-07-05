@@ -5,7 +5,6 @@ var verifyToken = require("../config/auth").verifyToken;
 var authLogin = require("../config/auth").authLogin;
 
 router.post('/register', (req, res) => {
-    // Mock user
     const user = req.body
     Users.newUser(user)
       .then(user => res.json(user))
@@ -60,14 +59,12 @@ router.get('/:username', verifyToken, (req, res) => {
 })
 
 router.delete('/favorites/:game', verifyToken, (req, res) => {
-    console.log(`Favoritos DELETE------`)
     Users.deleteFavorite(req.user.username, req.params.game)
       .then(data => res.json(data))
       .catch(e => res.status(500).send(`Erro na remoção do jogo ${req.params.gane} da lista de favoritos do utilizador "${req.user.username}": ${e}`))
 })
 
 router.delete('/wishes/:game', verifyToken, (req, res) => {
-    console.log(`Wishes DELETE------`)
     Users.deleteWish(req.user.username, req.params.game)
       .then(data => res.json(data))
       .catch(e => res.status(500).send(`Erro na remoção do jogo ${req.params.gane} da lista de desejos do utilizador "${req.user.username}": ${e}`))

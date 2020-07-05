@@ -207,7 +207,6 @@ Users.setProfilePic = async function (username, file){
         gew:${username} gew:profile '${file}'
     }`
     user.profile = file
-    console.log(user)
     var encoded = encodeURIComponent(prefixes + query)
 
     try{
