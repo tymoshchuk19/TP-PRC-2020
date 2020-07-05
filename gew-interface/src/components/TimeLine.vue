@@ -36,9 +36,29 @@
         color="blue"
         dark
       >
-        <v-card-title class="title">{{ item.name }}</v-card-title>
+        <v-card-title class="title">
+          <v-row>
+            <v-col cols=1>
+              <v-icon @click="addWished(item.name)" class="btn-border white--text mr-5">
+                mdi-stairs
+              </v-icon>
+            </v-col>   
+            <v-col cols=1>
+              <v-icon @click="addFavorite(item.slug)" class="btn-border white--text mr-5">
+                mdi-star
+              </v-icon>
+            </v-col>
+            <v-col cols=10>
+              {{ item.name }}
+            </v-col>
+          </v-row>
+        </v-card-title>
           <v-card-text class="white text--primary">
-          <v-img :src="item.background_image" :aspect-ratio="16/9"></v-img>
+          <v-img 
+            :src="item.background_image" 
+            :aspect-ratio="16/9"
+            @click="$router.push(`/game/${item.slug}`)"
+          ></v-img>
         </v-card-text>
       </v-card>
     </v-timeline-item>
@@ -81,6 +101,17 @@ import axios from 'axios'
       }
     },
     methods: {
+      addFavorite (game) {
+        axios.post(`http://localhost:1919/users/favorites/${game}`,{
+          headers: {
+            Authorization: this.$store.state.token 
+          }
+        })
+          .then(data => {
+            console.log(data.data);
+          })
+          .catch(error => console.log(error));
+      },
       getGames(){
         var getLink = `http://localhost:1919/${this.tab}/${this.page}`
         if(this.genre != ''){ 
@@ -132,3 +163,11 @@ import axios from 'axios'
     }),
   }
 </script>
+<style>
+  .btn-border {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ffffff;
+  }
+  
+</style>

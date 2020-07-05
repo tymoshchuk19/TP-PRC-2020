@@ -24,14 +24,16 @@
             :rules="rules"
             outlined
             dense
-            hide-selected
             allow-overflow
             label="Find your favorite game."
           >
             <template v-slot:item="{ index, item }">
-              <v-row>
+              <v-row @click="$router.push(`/game/${item.slug}`)">
                 <v-col cols=4>
-                  <v-img :src="item.background_image" :aspect-ratio="10/10"></v-img>
+                  <v-img 
+                    :src="item.background_image" 
+                    :aspect-ratio="10/10"
+                    ></v-img>
                 </v-col>
 
                 <v-col cols=8>
@@ -63,7 +65,7 @@
         text
         @click="drawAccount = !drawAccount"
       >
-        <v-icon v-if="!$store.state.user.image" class="white--text mr-5 ml-5">
+        <v-icon v-if="!$store.state.user.profile" class="white--text mr-5 ml-5">
           mdi-account
         </v-icon>
 
@@ -71,7 +73,7 @@
           v-else 
         >
           <v-img 
-            :src="$store.state.user.image" 
+            :src="'http://localhost:1919/uploads/' + $store.state.user.profile" 
           ></v-img>
         </v-avatar>
         <span class="ma-3"> {{$store.state.user.name}} </span>
@@ -130,7 +132,6 @@ export default {
       axios.get(`http://localhost:1919/search/${this.game}`)
         .then(data => {
           this.items = data.data;
-          console.log('carreguei jogos')
         })
         .catch(error => console.log(error));
     }

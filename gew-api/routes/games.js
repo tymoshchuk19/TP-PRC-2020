@@ -5,7 +5,7 @@ var qs = require('querystring')
 var verifyToken = require("../config/auth").verifyToken;
 
 /*GET game by slug */
-router.get('/:slug', verifyToken, async function(req, res, next) {
+router.get('/:slug', async function(req, res, next) {
   Games.getGame(decodeURIComponent(req.params.slug))
     .then(dados => {
       res.jsonp(dados)

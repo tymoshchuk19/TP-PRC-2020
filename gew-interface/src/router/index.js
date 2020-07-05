@@ -13,6 +13,12 @@ Vue.use(VueRouter)
     meta: { requiresAuth: true }
   },
   {
+    path: '/game/:slug',
+    name: 'Game',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Game.vue'),
+    props: true
+  },
+  {
     path: '/account',
     name: 'Account',
     component: () => import(/* webpackChunkName: "about" */ '../views/Account.vue'),
