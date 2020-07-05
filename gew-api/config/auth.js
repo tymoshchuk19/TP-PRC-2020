@@ -6,7 +6,6 @@ async function authLogin(user){
 
 // Verify Token
 function verifyToken(req, res, next) {
-    console.log('OLa')
     // Check if bearer is undefined
     if(req.headers['authorization']) {
         // Set the token

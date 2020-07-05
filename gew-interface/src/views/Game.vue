@@ -53,15 +53,45 @@
 
     <v-row>
       <v-col cols=6>
-        <v-card>
-          <v-img class="ma-1" :src="item.background_image" :aspect-ratio="1/1"></v-img>
+        <v-card
+          class="mx-auto"
+          max-width="300"
+          tile
+        >
+          <v-list rounded>
+            <v-subheader>Developers</v-subheader>
+            <v-list-item-group color="primary">
+              <v-list-item
+                v-for="(item, i) in developers"
+                :key="i"
+              >
+                <v-list-item-content>
+                  <v-list-item-title v-text="item.name"></v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-item-group>
+          </v-list>
         </v-card>
       </v-col>
       <v-col cols=6>
-        <v-card>
-          <div class="headline font-weight-bold blue--text">
-            {{item.name}}
-          </div>
+        <v-card
+          class="mx-auto"
+          max-width="300"
+          tile
+        >
+          <v-list rounded>
+            <v-subheader>Platforms</v-subheader>
+            <v-list-item-group color="primary">
+              <v-list-item
+                v-for="(item, i) in platforms"
+                :key="i"
+              >
+                <v-list-item-content>
+                  <v-list-item-title v-text="item.name"></v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-item-group>
+          </v-list>
         </v-card>
       </v-col>
     </v-row>
@@ -125,6 +155,8 @@ export default {
           this.description = response.data.description.replace(/<\/?[^>]+(>|$)/g, "");
           this.release = response.data.released.split('T')[0]
           this.rating = response.data.rating.split('E')[0]
+          this.developers = response.data.developers
+          this.platforms = response.data.platforms
         }).catch((error) => {
           console.log('FAILURE!!!\n' + error);
         });
@@ -140,6 +172,8 @@ export default {
         description: null,
         release: null,
         rating: null,
+        developers: [],
+        platforms: [],
         items: [{
           name: 'Test',
           description: "Some description",

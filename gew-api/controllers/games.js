@@ -282,6 +282,7 @@ Games.getGamePlatforms = async function(slug){
     try {
         var response = await axios.get(getLink + encoded)
         var arr = myNormalize(response.data)
+        console.log(arr)
         if (arr[0] != null){
             return arr
         }
