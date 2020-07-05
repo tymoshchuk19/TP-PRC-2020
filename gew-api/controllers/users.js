@@ -122,7 +122,6 @@ Users.newFavorite = async function(username, slug){
     {
         gew:${username} gew:hasFavorite gew:${slug}.
     }`
-    console.log(query)
     var encoded = encodeURIComponent(prefixes + query)
 
     try{

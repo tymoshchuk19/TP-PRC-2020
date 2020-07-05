@@ -28,29 +28,29 @@ router.post('/authenticate', (req, res) => {
         .catch(err => res.jsonp(err));
 });
 
-router.get('/favorites/:user', verifyToken, (req, res) => {
-    Users.getFavorites(req.params.user)
+router.get('/favorites', verifyToken, (req, res) => {
+    Users.getFavorites(req.user.username)
       .then(data => res.json(data))
-      .catch(e => res.status(500).send(`Erro na obtenção da lista de favoritos do utilizador "${req.params.user}": ${e}`))
+      .catch(e => res.status(500).send(`Erro na obtenção da lista de favoritos do utilizador "${req.user.username}": ${e}`))
 })
 
-router.get('/wishes/:user', verifyToken, (req, res) => {
-    Users.getWishes(req.params.user)
+router.get('/wishes', verifyToken, (req, res) => {
+    Users.getWishes(req.user.username)
       .then(data => res.json(data))
-      .catch(e => res.status(500).send(`Erro na obtenção da lista de desejos do utilizador "${req.params.user}": ${e}`))
+      .catch(e => res.status(500).send(`Erro na obtenção da lista de desejos do utilizador "${req.user.username}": ${e}`))
 })
 
-router.post('/favorites/:game', (req, res) => {
+router.post('/favorites/:game', verifyToken, (req, res) => {
     console.log(`Favoritos------`)
     Users.newFavorite(req.user.username, req.params.game)
       .then(data => res.json(data))
-      .catch(e => res.status(500).send(`Erro na adição à lista de favoritos do utilizador "${req.params.user}": ${e}`))
+      .catch(e => res.status(500).send(`Erro na adição à lista de favoritos do utilizador "${req.user.username}": ${e}`))
 })
 
-router.post('/wishes/:game', (req, res) => {
+router.post('/wishes/:game', verifyToken, (req, res) => {
     Users.newWish(req.user.username, req.params.game)
       .then(data => res.json(data))
-      .catch(e => res.status(500).send(`Erro na adição à lista de desejos do utilizador "${req.params.user}": ${e}`))
+      .catch(e => res.status(500).send(`Erro na adição à lista de desejos do utilizador "${req.user.username}": ${e}`))
 })
 
 
