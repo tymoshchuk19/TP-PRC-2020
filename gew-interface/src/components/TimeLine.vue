@@ -39,12 +39,12 @@
         <v-card-title class="title">
           <v-row>
             <v-col cols=1>
-              <v-icon @click="addWished(item.name)" class="btn-border white--text mr-5">
+              <v-icon @click="addWished(item)" class="btn-border white--text mr-5">
                 mdi-stairs
               </v-icon>
             </v-col>   
             <v-col cols=1>
-              <v-icon @click="addFavorite(item.slug)" class="btn-border white--text mr-5">
+              <v-icon @click="addFavorite(item)" class="btn-border white--text mr-5">
                 mdi-star
               </v-icon>
             </v-col>
@@ -102,23 +102,25 @@ import axios from 'axios'
     },
     methods: {
       addFavorite (game) {
-        axios.get(`http://localhost:1919/users/favorites/${game}`,{
+        axios.get(`http://localhost:1919/users/favorites/${game.slug}`,{
           headers: {
             Authorization: this.$store.state.token 
           }
         })
           .then(data => {
+            this.$store.commit('setFavorites', game);
             console.log(data.data);
           })
           .catch(error => console.log(error));
       },
       addWished (game) {
-        axios.post(`http://localhost:1919/users/whishes/${game}`,{
+        axios.get(`http://localhost:1919/users/wishes/${game.slug}`,{
           headers: {
             Authorization: this.$store.state.token 
           }
         })
           .then(data => {
+            this.$store.commit('setWishes', game);
             console.log(data.data);
           })
           .catch(error => console.log(error));

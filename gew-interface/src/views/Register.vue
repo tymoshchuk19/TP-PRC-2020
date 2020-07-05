@@ -77,7 +77,7 @@ import qs from 'querystring'
       register(){
         axios.post('http://localhost:1919/users/register', qs.stringify({
           email: this.email,
-          name: this.username,
+          username: this.username,
           password: this.password,
         }), {
           headers: {

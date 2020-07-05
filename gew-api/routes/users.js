@@ -48,6 +48,7 @@ router.get('/favorites/:game', verifyToken, (req, res) => {
 })
 
 router.get('/wishes/:game', verifyToken, (req, res) => {
+    console.log(`Wishes------`)
     Users.newWish(req.user.username, req.params.game)
       .then(data => res.json(data))
       .catch(e => res.status(500).send(`Erro na adição à lista de desejos do utilizador "${req.user.username}": ${e}`))

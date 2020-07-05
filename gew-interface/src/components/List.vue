@@ -7,8 +7,13 @@
     <div class="headline font-weight-bold white--text ma-2">
       {{label}}
     </div>
-    <v-card class="ma-1" v-for="item in items" :key="item.name">
-      <v-row>
+    <v-card 
+      class="ma-1"  
+      v-for="item in items"
+      :key="item.name"
+      >
+      
+      <v-row @click="getGameURL(item)">
         <v-col cols=4>
           <v-img class="ma-1" :src="item.background_image" :aspect-ratio="1/1"></v-img>
         </v-col>
@@ -34,6 +39,13 @@
   export default {
     props: ['label'],
     methods: {
+    getGameURL(item) {
+      console.log(item)
+      if(this.label == 'Favorites')
+        this.$router.push(`/game/${item.fav.split('#')[1]}`)
+      if(this.label == 'Wishes')
+        this.$router.push(`/game/${item.wish.split('#')[1]}`)
+    },
     getItems () {
       if(this.label == 'Favorites')
         this.items = this.$store.state.user.favorites

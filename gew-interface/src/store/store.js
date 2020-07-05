@@ -8,6 +8,15 @@ export const store = new Vuex.Store({
         user: null
     },
     mutations: {
+
+        setFavorites(state, game){ 
+            if (state.user.favorites.filter(e => e.name === game.name).length == 0)
+                state.user.favorites.push(game);
+        },
+        setWishes(state, game){ 
+            if (state.user.wishes.filter(e => e.name === game.name).length == 0)
+                state.user.wishes.push(game);
+        },
         setToken(state, token){ 
             state.token = token;
         },

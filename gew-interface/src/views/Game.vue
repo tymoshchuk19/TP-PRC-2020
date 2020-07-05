@@ -13,14 +13,28 @@
     
     <v-row>
       <v-col cols=12 class="ma-5">
-        <v-textarea
-          autocomplete="name"
-          label="Name"
-          rows="1"
-          :value="name"
-          disabled
-        >
-        </v-textarea>
+        <v-row>
+          <v-col cols=1 >
+            <v-icon @click="addWished()" color="primary" class="btn-border white--text mr-5">
+              mdi-stairs
+            </v-icon>
+          </v-col>   
+          <v-col cols=1>
+            <v-icon @click="addFavorite()" color="primary" class="btn-border white--text mr-5">
+              mdi-star
+            </v-icon>
+          </v-col>
+          <v-col cols=10>
+            <v-textarea
+              autocomplete="name"
+              label="Name"
+              rows="1"
+              :value="name"
+              disabled
+            >
+            </v-textarea>
+          </v-col>
+        </v-row>
         <v-textarea
           autocomplete="description"
           label="Description"
@@ -143,6 +157,30 @@ export default {
   components: {
   },
   methods: {
+    addFavorite () {
+      axios.get(`http://localhost:1919/users/favorites/${this.game.slug}`,{
+        headers: {
+          Authorization: this.$store.state.token 
+        }
+      })
+        .then(data => {
+          this.$store.commit('setFavorites', this.game);
+          console.log(data.data);
+        })
+        .catch(error => console.log(error));
+    },
+    addWished () {
+      axios.get(`http://localhost:1919/users/wishes/${this.game.slug}`,{
+        headers: {
+          Authorization: this.$store.state.token 
+        }
+      })
+        .then(data => {
+          this.$store.commit('setWishes', this.game);
+          console.log(data.data);
+        })
+        .catch(error => console.log(error));
+    },
     getGame(){
       axios.get(`http://localhost:1919/${this.slug}`, {
         headers: {
@@ -160,6 +198,13 @@ export default {
           this.rating = response.data.rating.split('E')[0]
           this.developers = response.data.developers
           this.platforms = response.data.platforms
+          this.background_image = response.data.background_image
+          this.game = {
+            slug: this.slug,
+            name: this.name,
+            background_image: this.background_image,
+            rating: this.rating,
+          }
         }).catch((error) => {
           console.log('FAILURE!!!\n' + error);
         });
@@ -170,6 +215,7 @@ export default {
   },
   data () {
       return {
+        game: null,
         name: null,
         screenshots: [],
         description: null,
