@@ -58,7 +58,10 @@
           max-width="300"
           tile
         >
-          <v-list rounded>
+          <v-list 
+            rounded
+            disabled
+            >
             <v-subheader>Developers</v-subheader>
             <v-list-item-group color="primary">
               <v-list-item
