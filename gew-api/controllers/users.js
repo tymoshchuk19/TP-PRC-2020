@@ -158,14 +158,12 @@ Users.setProfilePic = async function (username, file){
     if(user.profile){
         query += `
         DELETE DATA { 
-            gew:${username} gew:profile '${user.profile }'
+            gew:${username} gew:profile '${user.profile}'
         };`
-        // try{
-        //     fs.unlink(`./public/images/${user.profile}`)
-        // } catch(err) {
-        //     console.error(err)
-        // }
-        
+        fs.unlink(`./public/images/${user.profile}`, (err) => {
+            if (err) throw err;
+            console.log(`A imagem ${user.profile} foi apagada`);
+        })
     }
 
     query += `
