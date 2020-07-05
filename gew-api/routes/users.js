@@ -53,7 +53,6 @@ router.post('/wishes/:game', verifyToken, (req, res) => {
       .catch(e => res.status(500).send(`Erro na adição à lista de desejos do utilizador "${req.user.username}": ${e}`))
 })
 
-
 router.get('/:username', verifyToken, (req, res) => {
     Users.getUser(req.params.username)
     .then(data => res.json(data))
