@@ -39,7 +39,6 @@
         this.items = this.$store.state.user.favorites
       if(this.label == 'Wishes')
         this.items = this.$store.state.user.wishes
-      console.log("user:", this.$store.state.user)
       }
     },
     created() {

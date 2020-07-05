@@ -10,15 +10,15 @@
   >
       <v-card class="pb-5 pt-5" color="primary">
         <div class="ml-10">
-          <v-icon v-if="!$store.state.user.image" class="white--text mr-5 ml-5">
+          <v-icon v-if="!$store.state.user.profile" class="white--text mr-5 ml-5">
             mdi-account
           </v-icon>
 
           <v-avatar
             v-else 
           >
-            <v-img 
-              :src="$store.state.user.image" 
+            <v-img             
+            :src="'http://localhost:1919/uploads/' + $store.state.user.profile" 
             ></v-img>
           </v-avatar>
           <span class="white--text ma-1">
@@ -72,7 +72,6 @@ export default {
           action: () => {
             this.$store.commit('setToken', null);
             this.$store.commit('setUser', null);
-            console.log(this.$store.state.token)
             this.$router.push('/login');
           }
         }],

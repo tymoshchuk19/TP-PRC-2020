@@ -1,115 +1,135 @@
 <template>
-  <div class="GAme">
-    <v-carousel
-      cycle
-      height="400"
-      hide-delimiter-background
-      show-arrows-on-hover
-    > 
+  <div class="Game">
+    
+    <v-carousel>
       <v-carousel-item
-        v-for="(slide, i) in slides"
+        v-for="(item,i) in screenshots"
         :key="i"
-      >
-        <v-sheet
-          :color="colors[i]"
-          height="100%"
-        >
-          <v-row
-            class="fill-height"
-            align="center"
-            justify="center"
-          >
-            <div class="display-3">{{ slide }} Slide</div>
-          </v-row>
-        </v-sheet>
-      </v-carousel-item>
+        :src="item.screenshot.split('#')[1]"
+        reverse-transition="fade-transition"
+        transition="fade-transition"
+      ></v-carousel-item>
     </v-carousel>
+    
     <v-row>
-      <v-col cols=4 >
-        <v-img
-          class="img-circle" 
-          :src="$store.state.user.image" 
-        ></v-img>
-        <v-row>
-          <v-col cols=8>
-            <v-file-input
-              v-model="file"
-              accept="image/png, image/jpeg, image/bmp"
-              placeholder="Pick an avatar"
-              prepend-icon="mdi-camera"
-              label="Avatar"
-            ></v-file-input>
-          </v-col>
-          <v-col cols=4>
-            <v-btn color="primary" class="img-circle" @click="addFile()"> 
-              <v-icon>
-                mdi-cloud-upload
-              </v-icon>
-            </v-btn>
-          </v-col>
-        </v-row>
-      </v-col>
-      <v-col cols=8>
+      <v-col cols=12 class="ma-5">
         <v-textarea
           autocomplete="name"
           label="Name"
           rows="1"
-          :value="$store.state.user.name"
+          :value="name"
           disabled
-        ></v-textarea>
+        >
+        </v-textarea>
         <v-textarea
-          autocomplete="email"
-          label="Email"
-          rows="1"
-          :value="$store.state.user.email"
+          autocomplete="description"
+          label="Description"
+          :value="description"
           disabled
         ></v-textarea>
         <v-row>
-          <v-col cols=6>
-            <List label="Favorites"/>
+          <v-col cols=6> 
+            <v-textarea
+              autocomplete="release"
+              label="Release"
+              rows="1"
+              :value="release"
+              disabled
+            ></v-textarea>
           </v-col>
-          <v-col cols=6>
-            <List label="Wishes"/>
+          <v-col cols=6> 
+            <v-textarea
+              autocomplete="rating"
+              label="Rating"
+              rows="1"
+              :value="rating"
+              disabled
+            ></v-textarea>
+
           </v-col>
         </v-row>
       </v-col>
     </v-row>
+
+    <v-card
+      class="ma-3"
+      color="primary"
+    >
+      <div class="headline font-weight-bold white--text ma-2">
+        Achievements
+      </div>
+      <v-row>
+        <v-col cols=4 v-for="item in items" :key="item.name">
+          <v-card class="pa-2 ma-2">
+            <v-row>
+              <v-col cols=4>
+                <v-img class="ma-1" :src="item.background_image" :aspect-ratio="1/1"></v-img>
+              </v-col>
+              <v-col cols=8>
+                <div class="headline font-weight-bold blue--text">
+                  {{item.name}}
+                </div>
+              </v-col>
+            </v-row>
+            <v-textarea
+              autocomplete="description"
+              label="Description"
+              rows="2"
+              :value="item.description"
+              disabled
+            ></v-textarea>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-card>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import axios from 'axios'
-import List from "@/components/List.vue";
 
 export default {
-  name: 'Account',
+  name: 'Game',
+  props: ['slug'],
   components: {
-    List
   },
   methods: {
-    addFile(){
-      let data = new FormData();
-      data.append('newfile', this.file, this.file.fileName);
-      axios.post(`http://localhost:1919/${this.slug}`, data, {
+    getGame(){
+      axios.get(`http://localhost:1919/${this.slug}`, {
         headers: {
           'Content-Type': `multipart/form-data;`,
           Authorization: this.$store.state.token
         }
       })
         .then((response) => {
-          console.log(response.data);
-          this.getFiles();
+          console.log(response.data)
+          this.name = response.data.name
+          this.items = response.data.achievements
+          this.screenshots = response.data.short_screenshots;
+          this.description = response.data.description.replace(/<\/?[^>]+(>|$)/g, "");
+          this.release = response.data.released.split('T')[0]
+          this.rating = response.data.rating.split('E')[0]
         }).catch((error) => {
           console.log('FAILURE!!!\n' + error);
         });
     }
   },
-  mounted() {
+  created() {
+    this.getGame()
   },
   data () {
       return {
-        file: null
+        name: null,
+        screenshots: [],
+        description: null,
+        release: null,
+        rating: null,
+        items: [{
+          name: 'Test',
+          description: "Some description",
+          background_image: 'https://media.contentapi.ea.com/content/dam/gin/images/2018/06/command-and-conquer-rivals-key-art.jpg.adapt.crop1x1.767p.jpg'
+        }],
       }
     }
 }

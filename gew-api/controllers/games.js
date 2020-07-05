@@ -98,12 +98,13 @@ Games.getPage = async function(page, tab, filter){
             if(s[i]){
                 slug = s[i].split('#')[1]
                 var query = `
-                select ?name ?rating ?background_image ?released where { 
+                select ?slug ?name ?rating ?background_image ?released where { 
                     gew:${slug} rdf:type gew:Games ;
                     gew:name ?name ;
                     gew:rating ?rating ;
                     gew:background_image ?background_image ;
-                    gew:released ?released .`
+                    gew:released ?released .
+                    bind(str('${slug}') as ?slug) . `
 
                 if(filter.hasGenre){
                     query += `
@@ -190,14 +191,15 @@ Games.getSearchGames = async function(search) {
             slug = s[i].split('#')[1]
             if(slug.includes(searchSlug)) {
                 var query = `
-                select ?name ?rating ?background_image ?released where { 
+                select ?name ?slug ?rating ?background_image ?released where { 
                     gew:${slug} rdf:type gew:Games ;
                     gew:name ?name ;
                     gew:rating ?rating ;
                     gew:background_image ?background_image ;
-                    gew:released ?released .}`
+                    gew:released ?released .
+                    bind(str('${slug}') as ?slug).
+                }`
                 
-                console.log(query)
                 var encoded = encodeURIComponent(prefixes + query)
 
                 try{

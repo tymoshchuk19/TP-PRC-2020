@@ -11,7 +11,7 @@ export const store = new Vuex.Store({
         setToken(state, token){ 
             state.token = token;
         },
-        setUser(state, user){ 
+        setUser(state, user){
             state.user = user;
         }
     }

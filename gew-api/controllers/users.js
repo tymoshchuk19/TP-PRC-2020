@@ -2,8 +2,6 @@ var Users = module.exports
 const axios = require('axios')
 var host = require('../config/databases').host
 
-
-
 var prefixes = `
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
     PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -20,11 +18,12 @@ var updateLink = host + "/statements?update="
 
 Users.getUser = async function(username){
     var query = `
-    select ?name ?password ?email where {
+    select ?name ?password ?email ?profile where {
         gew:${username} rdf:type gew:Users ;
         gew:name ?name ;
         gew:password ?password ;
         gew:email ?email .
+        OPTIONAL {gew:${username} gew:profile ?profile .}
     } 
     ` 
     var encoded = encodeURIComponent(prefixes + query)
@@ -95,15 +94,12 @@ Users.getWishes = async function(username){
 Users.newUser = async function(newUser){
     var query = `
     INSERT DATA
-    { 
-        graph <http://www.semanticweb.org/prc/2020/gamingWikiUsers> 
-        { 
-            gew:${newUser.username} rdf:type gew:Users ;
-            rdf:type owl:NamedIndividual ;
-            gew:name "${newUser.username}" ;
-            gew:password "${newUser.password}" ;
-            gew:email "${newUser.email}" .
-        } 
+    {
+        gew:${newUser.username} rdf:type gew:Users ;
+        rdf:type owl:NamedIndividual ;
+        gew:name "${newUser.username}" ;
+        gew:password "${newUser.password}" ;
+        gew:email "${newUser.email}" .
     }
     `
     
@@ -122,11 +118,8 @@ Users.newUser = async function(newUser){
 Users.newFavorite = async function(username, slug){
     query = `
     INSERT DATA
-    { 
-        graph <http://www.semanticweb.org/prc/2020/gamingWikiUsers> 
-        { 
-            gew:${username} gew:hasFavorite gew:${slug}.
-        }
+    {
+        gew:${username} gew:hasFavorite gew:${slug}.
     }`
     console.log(query)
     var encoded = encodeURIComponent(prefixes + query)
@@ -144,10 +137,7 @@ Users.newWish = async function(username, slug){
     query = `
     INSERT DATA
     { 
-        graph <http://www.semanticweb.org/prc/2020/gamingWikiUsers> 
-        { 
-            gew:${username} gew:wishes gew:${slug}.
-        }
+        gew:${username} gew:wishes gew:${slug}.
     }`
 
     var encoded = encodeURIComponent(prefixes + query)
@@ -155,6 +145,34 @@ Users.newWish = async function(username, slug){
     try{
         var response = await axios.post(updateLink + encoded)
         return response.data
+    }
+    catch(e){
+        throw(e)
+    } 
+}
+
+Users.setProfilePic = async function (username, file){
+    var user = await Users.getUser(username);
+
+    query = ""
+    if(user.profile){
+        query += `
+        DELETE DATA { 
+            gew:${username} gew:profile '${user.profile }'
+        };`
+    }
+
+    query += `
+    INSERT DATA { 
+        gew:${username} gew:profile '${file}'
+    }`
+    user.profile = file
+    console.log(user)
+    var encoded = encodeURIComponent(prefixes + query)
+
+    try{
+        var response = await axios.post(updateLink + encoded)
+        return user
     }
     catch(e){
         throw(e)

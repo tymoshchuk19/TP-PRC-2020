@@ -4,7 +4,7 @@
       <v-col cols=4 >
         <v-img
           class="img-circle" 
-          :src="$store.state.user.image" 
+          :src="'http://localhost:1919/uploads/' + $store.state.user.profile"  
         ></v-img>
         <v-row>
           <v-col cols=8>
@@ -67,15 +67,14 @@ export default {
     addFile(){
       let data = new FormData();
       data.append('newfile', this.file, this.file.fileName);
-      axios.post('http://localhost:1919/file', data, {
+      axios.post('http://localhost:1919/files', data, {
         headers: {
           'Content-Type': `multipart/form-data;`,
           Authorization: this.$store.state.token
         }
       })
         .then((response) => {
-          console.log(response.data);
-          this.getFiles();
+          this.$store.commit('setUser', response.data);
         }).catch((error) => {
           console.log('FAILURE!!!\n' + error);
         });
@@ -92,6 +91,10 @@ export default {
 </script>
 <style>
   .img-circle {
-      border-radius: 50%;
+    border-radius: 50%;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #4d9ee1;
   }
+  
 </style>

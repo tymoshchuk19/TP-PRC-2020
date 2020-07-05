@@ -17,7 +17,6 @@ router.post('/authenticate', (req, res) => {
         .then(async user => {
             if(user && user.password === req.body.password) {
                 token = await authLogin(req.body)
-                console.log(user)
                 res.json({
                     user,
                     token
@@ -41,14 +40,15 @@ router.get('/wishes/:user', verifyToken, (req, res) => {
       .catch(e => res.status(500).send(`Erro na obtenção da lista de desejos do utilizador "${req.params.user}": ${e}`))
 })
 
-router.post('/favorites/:user/:game', verifyToken, (req, res) => {
-    Users.newFavorite(req.params.user, req.params.game)
+router.post('/favorites/:game', (req, res) => {
+    console.log(`Favoritos------`)
+    Users.newFavorite(req.user.username, req.params.game)
       .then(data => res.json(data))
       .catch(e => res.status(500).send(`Erro na adição à lista de favoritos do utilizador "${req.params.user}": ${e}`))
 })
 
-router.post('/wishes/:user/:game', verifyToken, (req, res) => {
-    Users.newWish(req.params.user, req.params.game)
+router.post('/wishes/:game', (req, res) => {
+    Users.newWish(req.user.username, req.params.game)
       .then(data => res.json(data))
       .catch(e => res.status(500).send(`Erro na adição à lista de desejos do utilizador "${req.params.user}": ${e}`))
 })
