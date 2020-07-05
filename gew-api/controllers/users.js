@@ -151,6 +151,42 @@ Users.newWish = async function(username, slug){
     } 
 }
 
+Users.deleteFavorite = async function (username, slug){
+    query = `
+    DELETE DATA
+    { 
+        gew:${username} gew:hasFavorite gew:${slug}.
+    }`
+
+    var encoded = encodeURIComponent(prefixes + query)
+
+    try{
+        var response = await axios.post(updateLink + encoded)
+        return response.data
+    }
+    catch(e){
+        throw(e)
+    } 
+}
+
+Users.deleteWish = async function (username, slug){
+    query = `
+    DELETE DATA
+    { 
+        gew:${username} gew:wishes gew:${slug}.
+    }`
+
+    var encoded = encodeURIComponent(prefixes + query)
+
+    try{
+        var response = await axios.post(updateLink + encoded)
+        return response.data
+    }
+    catch(e){
+        throw(e)
+    } 
+}
+
 Users.setProfilePic = async function (username, file){
     var user = await Users.getUser(username);
 

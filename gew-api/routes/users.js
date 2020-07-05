@@ -41,7 +41,6 @@ router.get('/wishes', verifyToken, (req, res) => {
 })
 
 router.get('/favorites/:game', verifyToken, (req, res) => {
-    console.log(`Favoritos------`)
     Users.newFavorite(req.user.username, req.params.game)
       .then(data => res.json(data))
       .catch(e => res.status(500).send(`Erro na adição à lista de favoritos do utilizador "${req.user.username}": ${e}`))
@@ -57,6 +56,20 @@ router.get('/:username', verifyToken, (req, res) => {
     Users.getUser(req.params.username)
     .then(data => res.json(data))
     .catch(e => res.status(500).send(`Erro na obtenção do utilizador "${req.params.username}": ${e}`))
+})
+
+router.delete('/favorites/:game', verifyToken, (req, res) => {
+    console.log(`Favoritos DELETE------`)
+    Users.deleteFavorite(req.user.username, req.params.game)
+      .then(data => res.json(data))
+      .catch(e => res.status(500).send(`Erro na remoção do jogo ${req.params.gane} da lista de favoritos do utilizador "${req.user.username}": ${e}`))
+})
+
+router.delete('/wishes/:game', verifyToken, (req, res) => {
+    console.log(`Wishes DELETE------`)
+    Users.deleteWish(req.user.username, req.params.game)
+      .then(data => res.json(data))
+      .catch(e => res.status(500).send(`Erro na remoção do jogo ${req.params.gane} da lista de desejos do utilizador "${req.user.username}": ${e}`))
 })
 
 module.exports = router;
