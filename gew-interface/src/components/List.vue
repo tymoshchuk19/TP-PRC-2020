@@ -13,8 +13,8 @@
       :key="item.name"
       >
       
-      <v-row @click="getGameURL(item)">
-        <v-col cols=4>
+      <v-row>
+        <v-col @click="getGameURL(item)" cols=4>
           <v-img class="ma-1" :src="item.background_image" :aspect-ratio="1/1"></v-img>
         </v-col>
         <v-col cols=8>
@@ -25,10 +25,20 @@
             :value="item.name"
             disabled
           ></v-textarea>
-          <div class="headline font-weight-bold blue--text">
-            {{item.rating.split('E')[0]}}
-            <v-icon class="font-weight-bold yellow--text">mdi-star</v-icon>
-          </div>
+
+          <v-row>
+            <v-col cols=6>
+              <div class="headline font-weight-bold blue--text">
+                {{item.rating.split('E')[0]}}
+                <v-icon class="font-weight-bold yellow--text">mdi-star</v-icon>
+              </div>
+            </v-col>
+            <v-col cols=6>
+              <div @click="remove(item); getItems()" class="headline font-weight-bold blue--text">
+                <v-icon class="font-weight-bold red--text">mdi-delete</v-icon>
+              </div>
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
     </v-card>
@@ -36,9 +46,36 @@
 </template>
 
 <script>
+import axios from "axios"
   export default {
     props: ['label'],
     methods: {
+    remove(game) {
+      if(this.label == 'Favorites'){ 
+        axios.delete(`http://localhost:1919/users/favorites/${game.fav.split('#')[1]}`,{
+          headers: {
+            Authorization: this.$store.state.token 
+          }
+        })
+          .then(data => {
+            this.$store.commit('rmFavorites', game.fav);
+            console.log(data.data);
+          })
+          .catch(error => console.log(error));
+      }
+      if(this.label == 'Wishes') {
+        axios.delete(`http://localhost:1919/users/wishes/${game.wish.split('#')[1]}`,{
+          headers: {
+            Authorization: this.$store.state.token 
+          }
+        })
+          .then(data => {
+            this.$store.commit('rmWishes', game.wish);
+            console.log(data.data);
+          })
+          .catch(error => console.log(error));
+      }
+    },
     getGameURL(item) {
       console.log(item)
       if(this.label == 'Favorites')

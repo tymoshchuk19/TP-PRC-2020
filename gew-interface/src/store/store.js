@@ -17,6 +17,13 @@ export const store = new Vuex.Store({
             if (state.user.wishes.filter(e => e.name === game.name).length == 0)
                 state.user.wishes.push(game);
         },
+        rmFavorites(state, game){ 
+            state.user.favorites.splice(state.user.favorites.findIndex(item => item.fav === game.fav), 1)
+
+        },
+        rmWishes(state, game){ 
+            state.user.wishes.splice(state.user.wishes.findIndex(item => item.wish === game.wish), 1)
+        },
         setToken(state, token){ 
             state.token = token;
         },
