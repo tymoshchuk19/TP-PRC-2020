@@ -40,14 +40,14 @@ router.get('/wishes', verifyToken, (req, res) => {
       .catch(e => res.status(500).send(`Erro na obtenção da lista de desejos do utilizador "${req.user.username}": ${e}`))
 })
 
-router.post('/favorites/:game', verifyToken, (req, res) => {
+router.get('/favorites/:game', verifyToken, (req, res) => {
     console.log(`Favoritos------`)
     Users.newFavorite(req.user.username, req.params.game)
       .then(data => res.json(data))
       .catch(e => res.status(500).send(`Erro na adição à lista de favoritos do utilizador "${req.user.username}": ${e}`))
 })
 
-router.post('/wishes/:game', verifyToken, (req, res) => {
+router.get('/wishes/:game', verifyToken, (req, res) => {
     Users.newWish(req.user.username, req.params.game)
       .then(data => res.json(data))
       .catch(e => res.status(500).send(`Erro na adição à lista de desejos do utilizador "${req.user.username}": ${e}`))

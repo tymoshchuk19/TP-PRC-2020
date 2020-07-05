@@ -102,7 +102,7 @@ import axios from 'axios'
     },
     methods: {
       addFavorite (game) {
-        axios.post(`http://localhost:1919/users/favorites/${game}`,{
+        axios.get(`http://localhost:1919/users/favorites/${game}`,{
           headers: {
             Authorization: this.$store.state.token 
           }

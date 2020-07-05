@@ -160,11 +160,11 @@ Users.setProfilePic = async function (username, file){
         DELETE DATA { 
             gew:${username} gew:profile '${user.profile }'
         };`
-        try{
-            fs.unlink(`./public/images/${user.profile}`)
-        } catch(err) {
-            console.error(err)
-        }
+        // try{
+        //     fs.unlink(`./public/images/${user.profile}`)
+        // } catch(err) {
+        //     console.error(err)
+        // }
         
     }
 
