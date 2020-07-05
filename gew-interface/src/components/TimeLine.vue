@@ -112,6 +112,17 @@ import axios from 'axios'
           })
           .catch(error => console.log(error));
       },
+      addWished (game) {
+        axios.post(`http://localhost:1919/users/whishes/${game}`,{
+          headers: {
+            Authorization: this.$store.state.token 
+          }
+        })
+          .then(data => {
+            console.log(data.data);
+          })
+          .catch(error => console.log(error));
+      },
       getGames(){
         var getLink = `http://localhost:1919/${this.tab}/${this.page}`
         if(this.genre != ''){ 
