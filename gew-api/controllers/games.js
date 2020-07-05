@@ -149,37 +149,6 @@ Games.getPage = async function(page, tab, filter){
     return res
 }
 
-Games.getGame = async function(slug){
-    var query = `
-    select ?name ?rating ?background_image ?released ?description where { 
-        gew:${slug} rdf:type gew:Games ;
-        gew:name ?name ;
-        gew:rating ?rating ;
-        gew:background_image ?background_image ;
-        gew:description ?description ;
-        gew:released ?released .
-    }`
-
-    var encoded = encodeURIComponent(prefixes + query)
-
-    try {
-        var response = await axios.get(getLink + encoded)
-        var arr = myNormalize(response.data)
-        if (arr[0] != null){
-            let achievements = await Games.getAchievements(slug)
-            arr[0].achievements = achievements;
-
-            let screenshots = await Games.getScreenshots(slug)
-            arr[0].short_screenshots = screenshots;
-
-            return arr[0]
-        }
-    }
-    catch(e){
-        console.log('error: ' + slug)
-    }
-}
-
 Games.getSearchGames = async function(search) {
     s = slugs()[0].concat(slugs()[1].concat(slugs()[2]))
     var games = []
@@ -219,6 +188,43 @@ Games.getSearchGames = async function(search) {
     return games
 }
 
+Games.getGame = async function(slug){
+    var query = `
+    select ?name ?rating ?background_image ?released ?description where { 
+        gew:${slug} rdf:type gew:Games ;
+        gew:name ?name ;
+        gew:rating ?rating ;
+        gew:background_image ?background_image ;
+        gew:description ?description ;
+        gew:released ?released .
+    }`
+
+    var encoded = encodeURIComponent(prefixes + query)
+
+    try {
+        var response = await axios.get(getLink + encoded)
+        var arr = myNormalize(response.data)
+        if (arr[0] != null){
+            let developers = await Games.getGameDevs(slug)
+            arr[0].developers = developers;
+
+            let platforms = await Games.getGamePlatforms(slug)
+            arr[0].platforms = platforms;
+
+            let achievements = await Games.getAchievements(slug)
+            arr[0].achievements = achievements;
+
+            let screenshots = await Games.getScreenshots(slug)
+            arr[0].short_screenshots = screenshots;
+
+            return arr[0]
+        }
+    }
+    catch(e){
+        console.log('error: ' + slug)
+    }
+}
+
 Games.getAchievements = async function(slug){
     var query = `
     select ?name ?description ?background_image where { 
@@ -227,6 +233,48 @@ Games.getAchievements = async function(slug){
         gew:name ?name ;
         gew:description ?description ;
         gew:background_image ?background_image .
+    }`
+
+    var encoded = encodeURIComponent(prefixes + query)
+
+    try {
+        var response = await axios.get(getLink + encoded)
+        var arr = myNormalize(response.data)
+        if (arr[0] != null){
+            return arr
+        }
+    }
+    catch(e){
+        console.log('erro na obtenção dos achievements de ' + slug)
+    }
+}
+
+Games.getGameDevs = async function(slug){
+    var query = `
+    select ?name where { 
+        ?dev gew:developed gew:${slug};
+        gew:name ?name.
+    }`
+
+    var encoded = encodeURIComponent(prefixes + query)
+
+    try {
+        var response = await axios.get(getLink + encoded)
+        var arr = myNormalize(response.data)
+        if (arr[0] != null){
+            return arr
+        }
+    }
+    catch(e){
+        console.log('erro na obtenção dos achievements de ' + slug)
+    }
+}
+
+Games.getGamePlatforms = async function(slug){
+    var query = `
+    select ?name where { 
+        gew:${slug} gew:existsFor ?platform .
+        ?platform gew:name ?name.
     }`
 
     var encoded = encodeURIComponent(prefixes + query)
