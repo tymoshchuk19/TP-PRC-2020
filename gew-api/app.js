@@ -32,12 +32,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-<<<<<<< HEAD
 app.use('/uploads', express.static(`./public/images`)); 
-=======
-
-app.use('/uploads', express.static('./public/images/'));
->>>>>>> e2ea41b7bd8b29dff258dd096010ebdd92cdfe45
 app.use('/developers', developersRouter);
 app.use('/platforms', platformsRouter);
 app.use('/genres', genresRouter);
