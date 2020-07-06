@@ -34,7 +34,7 @@
               </div>
             </v-col>
             <v-col cols=6>
-              <div @click="remove(item); getItems()" class="headline font-weight-bold blue--text">
+              <div @click="del(item)" class="headline font-weight-bold blue--text">
                 <v-icon class="font-weight-bold red--text">mdi-delete</v-icon>
               </div>
             </v-col>
@@ -50,27 +50,32 @@ import axios from "axios"
   export default {
     props: ['label'],
     methods: {
+      async del(item){
+        await this.remove(item);
+        this.getItems()
+      },
     remove(game) {
       if(this.label == 'Favorites'){ 
-        axios.delete(`http://localhost:1919/users/favorites/${game.fav.split('#')[1]}`,{
+        axios.delete(`http://localhost:1919/users/favorites/${(game.fav||game.slug).split('#')[1]}`,{
           headers: {
             Authorization: this.$store.state.token 
           }
         })
           .then(data => {
-            this.$store.commit('rmFavorites', game.fav);
+            console.log(game)
+            this.$store.commit('rmFavorites', game);
             console.log(data.data);
           })
           .catch(error => console.log(error));
       }
       if(this.label == 'Wishes') {
-        axios.delete(`http://localhost:1919/users/wishes/${game.wish.split('#')[1]}`,{
+        axios.delete(`http://localhost:1919/users/wishes/${(game.wish||game.slug).split('#')[1]}`,{
           headers: {
             Authorization: this.$store.state.token 
           }
         })
           .then(data => {
-            this.$store.commit('rmWishes', game.wish);
+            this.$store.commit('rmWishes', game);
             console.log(data.data);
           })
           .catch(error => console.log(error));
@@ -79,9 +84,9 @@ import axios from "axios"
     getGameURL(item) {
       console.log(item)
       if(this.label == 'Favorites')
-        this.$router.push(`/game/${item.fav.split('#')[1]}`)
+        this.$router.push(`/game/${(item.fav||item.slug).split('#')[1]}`)
       if(this.label == 'Wishes')
-        this.$router.push(`/game/${item.wish.split('#')[1]}`)
+        this.$router.push(`/game/${(item.wish||item.slug).split('#')[1]}`)
     },
     getItems () {
       if(this.label == 'Favorites')
@@ -90,7 +95,7 @@ import axios from "axios"
         this.items = this.$store.state.user.wishes
       }
     },
-    created() {
+    mounted() {
       this.getItems()
     },
     data: () => ({

@@ -39,12 +39,23 @@
         <v-card-title class="title">
           <v-row>
             <v-col cols=1>
-              <v-icon @click="addWished(item)" class="btn-border white--text mr-5">
+              <v-icon @click="
+                  addWished(item)
+                  conf(item.name + ' added to Wishes')
+                "
+                class="btn-border white--text mr-5"
+              >
                 mdi-stairs
               </v-icon>
             </v-col>   
             <v-col cols=1>
-              <v-icon @click="addFavorite(item)" class="btn-border white--text mr-5">
+              <v-icon 
+                @click="
+                  addFavorite(item); 
+                  conf( item.name + ' added to Favorites')
+                " 
+                class="btn-border white--text mr-5"
+              >
                 mdi-star
               </v-icon>
             </v-col>
@@ -101,6 +112,9 @@ import axios from 'axios'
       }
     },
     methods: {
+      conf( txt ) {
+          alert( txt )
+      },
       addFavorite (game) {
         axios.get(`http://localhost:1919/users/favorites/${game.slug}`,{
           headers: {

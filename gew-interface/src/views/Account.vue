@@ -2,7 +2,12 @@
   <div class="Account">
     <v-row>
       <v-col cols=4 >
+        <v-icon v-if="!$store.state.user.profile" class="white--text mr-5 ml-5">
+            mdi-account
+        </v-icon>
+
         <v-img
+          v-else
           class="img-circle" 
           :src="'http://localhost:1919/uploads/' + $store.state.user.profile"  
         ></v-img>

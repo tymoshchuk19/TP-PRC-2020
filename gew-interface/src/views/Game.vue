@@ -15,12 +15,25 @@
       <v-col cols=12 class="ma-5">
         <v-row>
           <v-col cols=1 >
-            <v-icon @click="addWished()" color="primary" class="btn-border white--text mr-5">
+            <v-icon @click="
+                addWished()
+                conf( name + ' added to Wishes')
+              " 
+              color="primary" 
+              class="btn-border white--text mr-5"
+            >
               mdi-stairs
             </v-icon>
           </v-col>   
           <v-col cols=1>
-            <v-icon @click="addFavorite()" color="primary" class="btn-border white--text mr-5">
+            <v-icon 
+              @click="
+                addFavorite();
+                conf( name + ' added to Favorites')
+              " 
+              color="primary" 
+              class="btn-border white--text mr-5"
+            >
               mdi-star
             </v-icon>
           </v-col>
@@ -157,6 +170,9 @@ export default {
   components: {
   },
   methods: {
+    conf( txt ) {
+        alert( txt )
+    },
     addFavorite () {
       axios.get(`http://localhost:1919/users/favorites/${this.game.slug}`,{
         headers: {

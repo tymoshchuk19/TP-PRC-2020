@@ -18,7 +18,7 @@ const upload = multer({
   dest: `./public/images/`
 });
 
-router.post('/',verifyToken ,upload.single('newfile'), async function (req, res) {
+router.post('/', verifyToken ,upload.single('newfile'), async function (req, res) {
     await Users.setProfilePic(req.user.username, req.file.filename)
               .then(data => res.json(data) )
               .catch(e => res.status(500).send(`Erro no update da imagem de perfil de "${req.user.username}": ${e}`))
